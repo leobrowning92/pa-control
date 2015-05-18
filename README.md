@@ -1,5 +1,9 @@
 # pa-control
+
+
 ##Overview
+
+
 The idea of this project is to improve how we interface with the 
 Parameter analyzer, both for command and data handling, in order
 to improve measurement efficiency
@@ -7,7 +11,7 @@ to improve measurement efficiency
 
 
 
-##DIRECTORIES
+##Directories
 
 
 
