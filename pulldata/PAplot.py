@@ -117,4 +117,5 @@ def plot_two_yscales(path,skip=1,delim=",",show=False,
     name=os.path.basename(path).replace(".csv","_plt.pdf")
     fig.savefig("plots/"+name,format="pdf")
 
-    return fig
+    plt.close(fig)
+    pass
