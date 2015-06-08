@@ -35,8 +35,13 @@ def clean_data():
 					lines.append(line[2:-1]) #removes extra ',' at the start of each data row
 
 			with open("data/"+path,'w') as g:
-				for line in lines:
-					g.write(line+"\n")
+				
+				
+				
+					for line in lines:
+						#checks for 9.91e+99 which is what is appended after compliance is hit 
+						if line.startswith('9.91e+99') == False:
+							g.write(line+"\n")
 
 			np.loadtxt("data/"+path,skiprows=skip,delimiter=delim,dtype=float)
 
