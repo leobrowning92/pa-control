@@ -56,8 +56,8 @@ def plot_two_same_axis(path,skip=1,delim=",",show=False,
     if os.path.isdir("plots")==False:
         os.system("mkdir plots")
 
-    name=os.path.basename(path).replace(".csv","_plt.pdf")
-    fig.savefig("plots/"+name,format="pdf")
+    name=os.path.basename(path).replace(".csv","_plt.jpg")
+    fig.savefig("plots/"+name,format="jpg")
 
     return fig
 
@@ -95,7 +95,7 @@ def plot_two_yscales(path,skip=1,delim=",",show=False,
     
     ax1.set_xlabel(xlabel,fontsize=20)
     ax1.set_ylabel(y1label,fontsize=20, color='r')
-    
+    ax1.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
     for tl in ax1.get_yticklabels():
         tl.set_color('r')
 
@@ -105,6 +105,7 @@ def plot_two_yscales(path,skip=1,delim=",",show=False,
 
 
     ax2.set_ylabel(y2label,fontsize=20, color='b')
+    ax2.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
     for tl in ax2.get_yticklabels():
         tl.set_color('b')
     
@@ -114,8 +115,8 @@ def plot_two_yscales(path,skip=1,delim=",",show=False,
     if os.path.isdir("plots")==False:
         os.system("mkdir plots")
 
-    name=os.path.basename(path).replace(".csv","_plt.pdf")
-    fig.savefig("plots/"+name,format="pdf")
+    name=os.path.basename(path).replace(".csv","_plt.jpg")
+    fig.savefig("plots/"+name,format="jpg")
 
     plt.close(fig)
     pass
