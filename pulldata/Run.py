@@ -13,7 +13,7 @@ for name in filenames:
 	paths.append("data/"+name)
 
 for path in paths:
-	PAplot.plot_two_yscales(path,skip=1,title="",show=False,
+	PAplot.plot_two_yscales(path,skip=1,title="",show=False,log=True,
 		xlabel="Gate Voltage (VG)",y1label="ID (A)",y2label="IG (A)")
 
 
