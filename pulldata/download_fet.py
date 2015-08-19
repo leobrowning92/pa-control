@@ -1,29 +1,30 @@
-## Script to download data from the parameter analyser manually.
+# Script to download data from the parameter analyser manually.
 import visa
 import os
 import msvcrt
 import sys
 import time
 
-## Timestamp to make things easier
+# Timestamp to make things easier
 def timeStampYMDH():
-    #-> 'YYYY_MM_DD_HHMM' as a time stamp
+    # -> 'YYYY_MM_DD_HHMM' as a time stamp
     return time.strftime('%Y_%m_%d_%H%M')
 
-## Path to save the file
-## Modify the C:\Users\... part only
-## the rest is to timestamp your data :)
-PATH = ("C:\Users\cleanroom.STAFF\Desktop\Leo\\2015-7-16_005COL068-072\\" + timeStampYMDH() + "_")
+# Path to save the file
+# Modify the C:\Users\... part only
+# the rest is to timestamp your data :)
+PATH = ("C:\Users\cleanroom.STAFF\Desktop\Leo\\2015-7-16_005COL068-072\\" +
+        timeStampYMDH() + "_")
 
-## Filename to save the file
-## Modify this filename but
-## leave as *.csv so you can open in excel :)
+# Filename to save the file
+# Modify this filename but
+# leave as *.csv so you can open in excel :)
 FILENAME = "chip068_6_multi_full_fet.csv" # values in the array values will be appended to the front of this
 
 ## Values to download
 ## Modify this array to the value of the data you wish to download
 ## See the user manual for how to obtain these values.
-values = ['VG','VDS','ID','IG'] 
+values = ['VG','VDS','ID','IG']
 
 ## Define the Matrix
 matrix = []
@@ -39,7 +40,7 @@ print("Obtaining %s parameters."%len(values))
 for x in range(0,len(values)):
     try:
         print("DO '%s'"%(values[x]))
-        device.write("DO '%s'"%(values[x]))  ## Change this depending on the value to download
+        device.write("DO '%s'"%(values[x]))  ## Change this depending on the  value to download
     except:
         print("Command Timeout!")
     data = device.read_values()
@@ -49,7 +50,7 @@ for x in range(0,len(values)):
         for i in xrange(len(data)):
             matrix.append
     matrix.append(data)
-matrix = zip(*matrix)   
+matrix = zip(*matrix)
 
 ## Save the data to disk
 PATH_FILENAME = PATH + FILENAME
