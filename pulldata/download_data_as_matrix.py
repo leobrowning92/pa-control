@@ -1,7 +1,5 @@
 ## Script to download data from the parameter analyser manually.
 import visa
-import os
-import msvcrt
 import sys
 import time
 
@@ -23,7 +21,7 @@ FILENAME = "TEST.csv" # values in the array values will be appended to the front
 ## Values to download
 ## Modify this array to the value of the data you wish to download
 ## See the user manual for how to obtain these values.
-values = ['VG','VDS','ID','IG'] 
+values = ['VG','VDS','ID','IG']
 
 ## Define the Matrix
 matrix = []
@@ -49,7 +47,7 @@ for x in range(0,len(values)):
         for i in xrange(len(data)):
             matrix.append
     matrix.append(data)
-matrix = zip(*matrix)   
+matrix = zip(*matrix)
 
 ## Save the data to disk
 PATH_FILENAME = PATH + FILENAME
