@@ -30,7 +30,7 @@ class Main(QtGui.QMainWindow):
         exitAction.triggered.connect(QtGui.qApp.quit)
 
         self.sb =self.statusBar()
-        self.sb.showMessage('Ready')
+        self.sb.showMessage('Set save Path before Continuing!')
 
         menubar = self.menuBar()
         fileMenu = menubar.addMenu('&File')
@@ -65,8 +65,8 @@ class widgets(QtGui.QWidget):
         self.btn.clicked.connect(self.saveData)
 
 
-        self.btn = QtGui.QPushButton('path', self)
-        grid.addWidget(self.btn,1,0)
+        self.btn = QtGui.QPushButton('Set Path', self)
+        grid.addWidget(self.btn,1,0,1,2)
         self.btn.clicked.connect(self.fileDialog)
 
         self.le = QtGui.QLineEdit(self)
