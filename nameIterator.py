@@ -1,7 +1,7 @@
 
 #active loop
 
-basename = input('Please input your file name with [ITER] \n in the region that you would like an iterator : ')
+basename = input('Please input your file name with [ITER]\n in the region that you would like an iterator : ')
 
 
 while True:
