@@ -6,6 +6,8 @@ import sys
 import time
 
 # Timestamp to make things easier
+
+
 def timeStampYMDH():
     # -> 'YYYY_MM_DD_HHMM' as a time stamp
     return time.strftime('%Y_%m_%d_%H%M')
@@ -19,44 +21,46 @@ PATH = ("C:\Users\cleanroom.STAFF\Desktop\Leo\\2015-7-16_005COL068-072\\" +
 # Filename to save the file
 # Modify this filename but
 # leave as *.csv so you can open in excel :)
-FILENAME = "chip068_6_multi_full_fet.csv" # values in the array values will be appended to the front of this
+# values in the array values will be appended to the front of this
+FILENAME = "chip068_6_multi_full_fet.csv"
 
-## Values to download
-## Modify this array to the value of the data you wish to download
-## See the user manual for how to obtain these values.
-values = ['VG','VDS','ID','IG']
+# Values to download
+# Modify this array to the value of the data you wish to download
+# See the user manual for how to obtain these values.
+values = ['VG', 'VDS', 'ID', 'IG']
 
-## Define the Matrix
+# Define the Matrix
 matrix = []
-## Obtain the data from the parameter analyser
-## No error checking
+# Obtain the data from the parameter analyser
+# No error checking
 device = visa.instrument("GPIB::02")
 try:
-    print("Parameter Analyser ID: %s"%(device.ask("ID")))
+    print("Parameter Analyser ID: %s" % (device.ask("ID")))
 except:
     print("Could not connect to Parameter Analyser, sorry")
     sys.exit()
-print("Obtaining %s parameters."%len(values))
-for x in range(0,len(values)):
+print("Obtaining %s parameters." % len(values))
+for x in range(0, len(values)):
     try:
-        print("DO '%s'"%(values[x]))
-        device.write("DO '%s'"%(values[x]))  ## Change this depending on the  value to download
+        print("DO '%s'" % (values[x]))
+        # Change this depending on the  value to download
+        device.write("DO '%s'" % (values[x]))
     except:
         print("Command Timeout!")
     data = device.read_values()
-    print("Obtained %d Data Values!"%(len(data)))
-    data.insert(0,"%s"%values[x])
+    print("Obtained %d Data Values!" % (len(data)))
+    data.insert(0, "%s" % values[x])
     if(matrix == []):
         for i in xrange(len(data)):
             matrix.append
     matrix.append(data)
 matrix = zip(*matrix)
 
-## Save the data to disk
+# Save the data to disk
 PATH_FILENAME = PATH + FILENAME
-with open(PATH_FILENAME,"a") as f:
-    for i in range(0,len(matrix)):
-        for j in range(0,len(matrix[i])):
+with open(PATH_FILENAME, "a") as f:
+    for i in range(0, len(matrix)):
+        for j in range(0, len(matrix[i])):
             f.write(", %s" % matrix[i][j])
         f.write('\n')
 f.close()
