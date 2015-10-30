@@ -1,5 +1,6 @@
 import os
 import numpy as np
+import sys
 
 
 def clean_data():
@@ -41,10 +42,10 @@ def clean_data():
 			except:
 				print('there was an error with np.loadtxt after cleaning for:\n '+path)
 
-	except:
+	except Exception as e:
 		print("Please insure the raw data is from the \
 				script download_data_as_matrix.py")
 		print("is in a folder called raw in the working directory")
+        #print(e)
 
 	print('------------End CleanData-------------')
-

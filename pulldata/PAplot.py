@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import os
 
 def plot_one(path,skip=1,delim=",",show=False,
-             title='x vs y',xlabel='x',ylabel='y',data1="y1",plottype = "xy"):
+             title='x vs y',xlabel='x',ylabel='y',data1="y1",plottype = "xy",log=False):
     """
     for diode measurments
     """
@@ -20,20 +20,14 @@ def plot_one(path,skip=1,delim=",",show=False,
     x=np.array([row[0]for row in data])
     y1=np.array([row[1]for row in data])
 
-
-
-
-
-
-
-
-
-
-
     fig=plt.figure(figsize=(10,8),facecolor="white")
     sub=plt.subplot(1,1,1)
 
-    sub.plot(x,y1,"-",linewidth=2.0)
+    if log:
+        sub.semilogy(x,y1,"r-",linewidth=2.0)
+    else:
+        sub.plot(x,y1,"r-",linewidth=2.0)
+        sub.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
 
     sub.legend((data1),loc=2,fontsize=30)
     sub.axis([min(x),max(x),min(y1),max(y1)],fontsize=20)
@@ -44,10 +38,10 @@ def plot_one(path,skip=1,delim=",",show=False,
     sub.tick_params(axis='both', which='major', labelsize=20)
     sub.set_xlabel(xlabel,fontsize=20)
     sub.set_ylabel(ylabel,fontsize=20)
-    sub.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
+
 
     if show:
-        plt.show(block=True)                           #can be uncommented to show the plots as they are produced.
+        plt.show(block=True)
     if os.path.isdir("plots")==False:
         os.system("mkdir plots")
 
@@ -76,14 +70,6 @@ def plot_two_same_axis(path,skip=1,delim=",",show=False,
     x=np.array([row[0]for row in data])
     y1=np.array([row[2]for row in data])
     y2=np.array([row[3]for row in data])
-
-
-
-
-
-
-
-
 
 
     fig=plt.figure(figsize=(10,8),facecolor="white")
