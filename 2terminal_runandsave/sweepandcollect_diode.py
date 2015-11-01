@@ -28,8 +28,8 @@ import visa
 # Path to save files
 ROOT = "C:/Users/Cleanroom.STAFF/Desktop/Leo/outputs"
 # File header information
-SAMPLE = 'DEP6_15'  # Information about the sample used
-CONDITIONS = 'thinAu_5kHz_lowV'  # Information about production conditions
+SAMPLE = 'Blank'  # Information about the sample used
+CONDITIONS = 'test'  # Information about production conditions
 
 
 # Source Settings
@@ -315,7 +315,11 @@ initialise_matrix_file(
 #===================================================
 
 #===================================================
-
+LF = serial.to_bytes([10])
+CR = serial.to_bytes([13])
+CRLF = serial.to_bytes([13, 10])
+start_char = 0
+end_char = 0
 
 # Open the GPIB bus
 print "Initialising the Analyser"
