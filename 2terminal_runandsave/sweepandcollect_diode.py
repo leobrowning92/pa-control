@@ -39,7 +39,7 @@ sweep_mode = '1'  # 1:Linear 2:Log10 3:Log25 4:Log50
 # Single: sweep up or down depending on the sign of VDS_step
 # Double: sweep both up and down
 # the sign of VDS_step just denotes which direction happens first.
-sweep = 'Double'
+sweep = 'Single'
 VAR1_voltage = 'VDS'  # VAR1 voltage label
 VAR1_current = 'ID'  # VAR1 current label
 VAR1_start = '-10'  # -100 to 100V for SMU; -200 to 200V for HPSMU; -20 to 20V for VSU
@@ -235,7 +235,7 @@ def update_file(path, info, data):
 
 # File setup methods matrix
 
- 
+
 def initialise_matrix_file(path, info):
     """
 
