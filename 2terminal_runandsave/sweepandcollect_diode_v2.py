@@ -467,7 +467,7 @@ for i in xrange(Cycles):
     if i == Cycles - 1:
         for i in range(0, len(transpose_matrix)):
             update_matrix_file(path_matrix, (time_since_start,
-                                             time_for_sweep, "%s" % msg), transpose_matrix[i])
+                                             time_for_sweep), transpose_matrix[i])
     # Exit nicely
     if check_escape():
         sys.exit()
