@@ -142,8 +142,6 @@ def xlTimeStamp():
 # Different loop modes
 
 
-
-
 # File setup methods
 
 
@@ -282,10 +280,7 @@ initialise_file(
     path_VAR1,
     (info_string, Header_string)
 )
-initialise_file(
-    path_VAR2,
-    (info_string, Header_string)
-)
+
 initialise_matrix_file(
     path_matrix,
     (info_string, Header_string)
@@ -327,13 +322,15 @@ except:
 program_parameters = "IT%s CA1 DR1 BC" % (Integration_time)
 print program_parameters
 HP4145B.write(program_parameters)
-# Setup Channel Definitions for sweep
-channel_definitions = "DE CH1,'VS','IS',3,3;CH2,'%s','%s',1,1;CH3,'%s','%s',1,2;CH4;" % (
+
+
+# Setup Channel Definitions for sweep #
+# CH<SMU_number>,'Vname','Iname', mode, function
+# modes: 1(Voaltage),2(Current),3(common)
+# functions: 1(VAR1), 2(VAR2), 3(CONSTANT)
+channel_definitions = "DE CH1,'VS','IS',3,3; CH2,'%s','%s',1,1;CH3,'%s','%s',1,2;CH4;" % (
     VAR1_voltage, VAR1_current, VAR2_voltage, VAR2_current)
-# Channel 1
-# Channel 2
-# Channel 3
-# Channel 4
+
 print channel_definitions
 HP4145B.write(channel_definitions)
 # Setup Measurement display
@@ -443,7 +440,6 @@ for i in xrange(Cycles):
     # print VAR1_down
     # print VAR2_down
     # Save values to disk
-
 
     VAR1_total.insert(0, VAR1_current)
     VAR2_total.insert(0, VAR2_current)

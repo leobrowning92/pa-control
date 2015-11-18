@@ -5,10 +5,12 @@ import matplotlib.pyplot as plt
 import os
 
 
-def plot_one(path, skip=1, delim=",", show=False,
-             title='x vs y', xlabel='x', ylabel='y', data1="y1", plottype="xy", log=False):
+def plot_IV(path, skip=1, delim=",", show=False,
+             title='IV', xlabel='V', ylabel='I', data1="y1", log=False):
     """
-    for diode measurments
+    for two terminal IV measurments
+    specifically from the usual FET sript that has
+    VG,VDS,ID,IG collumns in that order
     """
 
     title = os.path.basename(path).replace(".csv", "")
@@ -16,8 +18,8 @@ def plot_one(path, skip=1, delim=",", show=False,
     data = np.loadtxt(path, skiprows=skip, delimiter=delim, dtype=float)
     # print(data)
 
-    x = np.array([row[0]for row in data])
-    y1 = np.array([row[1]for row in data])
+    x = np.array([row[1]for row in data])
+    y1 = np.array([row[2]for row in data])
 
     fig = plt.figure(figsize=(10, 8), facecolor="white")
     sub = plt.subplot(1, 1, 1)
@@ -26,7 +28,7 @@ def plot_one(path, skip=1, delim=",", show=False,
         sub.semilogy(x, y1, "r-", linewidth=2.0)
     else:
         sub.plot(x, y1, "r-", linewidth=2.0)
-        sub.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
+        sub.ticklabel_format(style='sci', axis='y', scilimits = (0, 0))
 
     sub.legend((data1), loc=2, fontsize=30)
     sub.axis([min(x), max(x), min(y1), max(y1)], fontsize=20)
@@ -95,10 +97,11 @@ def plot_two_same_axis(path, skip=1, delim=",", show=False,
 
 def plot_two_yscales(path, skip=1, delim=",", show=False, save=True, log=False,
                      title='x vs y', xlabel='x', y1label='y1', y2label='y2'):
-    """plots x , y1 , y2 data from a 3 collumn csv file specific to the ones outputted from the
-    parameter analyzer in the clean room by the download_data_as_matrix.py script
+    """plots x , y1 , y2 data from a 3 collumn csv file
+    specific to the ones outputted from the parameter analyzer
+    in the clean room by the download_data_as_matrix.py script
     which has collumns VG, VDS, ID, IG in that order.
-     saves each plot to a directory called plots at the location of this script.
+    saves each plot to a directory called plots at the location of this script.
     """
 
     title = os.path.basename(path).replace(".csv", "")
@@ -135,6 +138,10 @@ def plot_two_yscales(path, skip=1, delim=",", show=False, save=True, log=False,
 
     ax2.set_ylabel(y2label, fontsize=20, color='b')
     ax2.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
+    offset_text = ax2.yaxis.get_offset_text()
+
+    offset_text.set_size(20)
+    offset_text.set_color('blue')
     for tl in ax2.get_yticklabels():
         tl.set_color('b')
 

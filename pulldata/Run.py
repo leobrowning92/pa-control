@@ -16,26 +16,23 @@ paths = []
 
 for name in filenames:
     paths.append("data/" + name)
-# uncomment for fet measurements
-# for path in paths:
-#	PAplot.plot_two_yscales(path,skip=1,title="",show=False,log=True,
-#		xlabel="Gate Voltage (VG)",y1label="ID (A)",y2label="IG (A)")
-# for path in paths:
-#    try:
-#        PAplot.plot_two_yscales(path,skip=1,title="",show=False,log=True,
-#		      xlabel="Gate Voltage (VG)",y1label="ID (A)",y2label="IG (A)"))
-#    except Exception as e:
-#        print('could not make a plot for:\n ' +path)
-#        print(e)
-
-
-# uncomment for diode measurments
+# uncomment for fet measurements#
 for path in paths:
-    try:
-        PAplot.plot_one(path, skip=1, title="", show=False,
-                        xlabel="Gate Voltage (VG)", ylabel="ID (A)", log=False)
-    except Exception as e:
-        print('could not make a plot for:\n ' + path)
-        traceback.print_exc()
-        print(e)
-print (sys.version)
+   try:
+       PAplot.plot_two_yscales(path,skip=1,title="",show=False,log=True,
+		      xlabel="Gate Voltage (VG)",y1label="ID (A)",y2label="IG (A)")
+   except Exception as e:
+       print('could not make a plot for:\n ' +path)
+       print(e)
+
+
+# uncomment for diode measurments#
+# for path in paths:
+#     try:
+#         PAplot.plot_one(path, skip=1, title="", show=False,
+#                         xlabel="Gate Voltage (VG)", ylabel="ID (A)", log=False)
+#     except Exception as e:
+#         print('could not make a plot for:\n ' + path)
+#         traceback.print_exc()
+#         print(e)
+# print (sys.version)
