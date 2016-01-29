@@ -152,7 +152,7 @@ def plot_two_yscales(path, skip=1, delim=",", show=False, save=True, log=False,
         if os.path.isdir("logplots") == False:
             os.system("mkdir logplots")
         name = os.path.basename(path).replace(".csv", "_plt.jpg")
-        fig.savefig("logplots/" + name, format="jpg")
+        fig.savefig("logplots/" + name, format="jpg",bbox_inches='tight')
 
     elif save:
         if os.path.isdir("plots") == False:
