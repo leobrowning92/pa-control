@@ -6,7 +6,7 @@ import os
 
 
 def plot_IV(path, skip=1, delim=",", show=False,
-             title='IV', xlabel='V', ylabel='I', data1="y1", log=False):
+            title='IV', xlabel='V', ylabel='I', data1="y1", log=False):
     """
     for two terminal IV measurments
     specifically from the usual FET sript that has
@@ -28,7 +28,7 @@ def plot_IV(path, skip=1, delim=",", show=False,
         sub.semilogy(x, y1, "r-", linewidth=2.0)
     else:
         sub.plot(x, y1, "r-", linewidth=2.0)
-        sub.ticklabel_format(style='sci', axis='y', scilimits = (0, 0))
+        sub.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
 
     sub.legend((data1), loc=2, fontsize=30)
     sub.axis([min(x), max(x), min(y1), max(y1)], fontsize=20)
@@ -152,7 +152,7 @@ def plot_two_yscales(path, skip=1, delim=",", show=False, save=True, log=False,
         if os.path.isdir("logplots") == False:
             os.system("mkdir logplots")
         name = os.path.basename(path).replace(".csv", "_plt.jpg")
-        fig.savefig("logplots/" + name, format="jpg",bbox_inches='tight')
+        fig.savefig("logplots/" + name, format="jpg", bbox_inches='tight')
 
     elif save:
         if os.path.isdir("plots") == False:
