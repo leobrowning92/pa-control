@@ -1,5 +1,5 @@
 import nameIterator as nmi
-
+import download_pa
 
 def handler(cmd,filename):
     if cmd == 'q':
@@ -10,6 +10,8 @@ def handler(cmd,filename):
         filename = nmi.iterateChip(filename)
     elif cmd == 'd':
         filename = nmi.iterateDevice(filename)
+    elif cmd == 'r':
+        download_pa.download_fet(filename=filename)
     else:
         print "That is an invalid input"
     return filename, True
@@ -27,9 +29,10 @@ def inputLoop():
             "Iterate chip (c) or device (d), new (n), or quit (q): ")
         filename, loop = handler(cmd,filename)
 
-        print "will save as: " + filename
+        print "filename : " + filename
+
 
 
     print "End of input. Thanks for using this Janky Terminal hack - Leo"
 
-#inputLoop()
+# inputLoop()
