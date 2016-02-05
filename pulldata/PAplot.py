@@ -119,11 +119,11 @@ def plot_two_yscales(path, skip=1, delim=",", show=False, save=True, log=False,
         ax1.semilogy(x, y1, "r-", linewidth=2.0)
     else:
         ax1.plot(x, y1, "r-", linewidth=2.0)
-        ax1.legend((data1, data2), loc=2, fontsize=30)
+        #ax1.legend((x, y2), loc=2, fontsize=30)
 
     ax1.tick_params(axis='both', which='major', labelsize=20)
 
-    ax1.set_title(title)
+    ax1.set_title(title,fontsize = 20)
 
     ax1.set_xlabel(xlabel, fontsize=20)
     ax1.set_ylabel(y1label, fontsize=20, color='r')

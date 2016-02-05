@@ -71,7 +71,9 @@ class PAGUI(Frame):
         """Returns a selected directoryname."""
         self.entry1.insert(0,tkFileDialog.askdirectory())
     def askfile(self):
-        self.entry2.insert(0,tkFileDialog.askopenfilename())
+        fullpath = tkFileDialog.askopenfilename()
+        i=fullpath.rfind("/")
+        self.entry2.insert(0,fullpath[i+1:])
 def main():
     root = Tk()
     root.geometry("800x200+300+300")

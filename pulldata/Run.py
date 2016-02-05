@@ -21,6 +21,8 @@ for path in paths:
    try:
        PAplot.plot_two_yscales(path,skip=1,title="",show=False,log=True,
 		      xlabel="Gate Voltage (VG)",y1label="ID (A)",y2label="IG (A)")
+       PAplot.plot_two_yscales(path,skip=1,title="",show=False,log=False,
+		      xlabel="Gate Voltage (VG)",y1label="ID (A)",y2label="IG (A)")
    except Exception as e:
        print('could not make a plot for:\n ' +path)
        print(e)
