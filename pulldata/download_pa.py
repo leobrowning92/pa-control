@@ -13,9 +13,9 @@ def timeStampYMDH():
 # Path to save the file
 # Modify the C:\Users\... part only
 # the rest is to timestamp your data :)
-def download_fet(
-        path="C:\Users\cleanroom.STAFF\Desktop\Leo\\2015-7-16_005COL068-072\\",
-        filename="chip068_6_multi_full_fet.csv",
+def download_data(
+        path="C:\Users\cleanroom.STAFF\Desktop\Leo\\test",
+        filename="COL_chip1111_device1_testing.txt",
         values=['VG', 'VDS', 'ID', 'IG']):
 
 
@@ -53,7 +53,7 @@ def download_fet(
     matrix = zip(*matrix)
 
     # Save the data to disk
-    PATH_filename = path + filename
+    PATH_FILENAME = os.path.join(path,filename)
     with open(PATH_FILENAME, "a") as f:
         for i in range(0, len(matrix)):
             for j in range(0, len(matrix[i])):
