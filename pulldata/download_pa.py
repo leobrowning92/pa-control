@@ -2,6 +2,7 @@
 import visa
 import sys
 import time
+import os
 
 # Timestamp to make things easier
 
@@ -21,7 +22,7 @@ def download_data(
 
 
     # adds a timestamp to the beginning of the filename
-    path = path + timeStampYMDH() + "_"
+    filename =timeStampYMDH() + "_"+filename 
 
 
 
@@ -60,4 +61,5 @@ def download_data(
                 f.write(", %s" % matrix[i][j])
             f.write('\n')
     f.close()
+    device.close()
     print("Complete, Goodbye!")
