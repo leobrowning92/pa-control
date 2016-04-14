@@ -80,6 +80,5 @@ def download_data(
                 f.write(", %s" % matrix[i][j])
             f.write('\n')
     f.close()
-
-    clean(PATH_FILENAME)
+    device.close
     print("Complete, Goodbye!")

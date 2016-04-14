@@ -42,7 +42,7 @@ def download_data(
 
 
     # adds a timestamp to the beginning of the filename
-    filename =timeStampYMDH() + "_"+filename 
+    filename =timeStampYMDH() + "_"+filename
 
 
 
@@ -81,10 +81,7 @@ def download_data(
                 f.write(", %s" % matrix[i][j])
             f.write('\n')
     f.close()
-<<<<<<< HEAD
-
     clean(PATH_FILENAME)
-=======
     device.close()
->>>>>>> 21201def9b32046c7b426c9acfab8750b36fdf0e
+
     print("Complete, Goodbye!")
