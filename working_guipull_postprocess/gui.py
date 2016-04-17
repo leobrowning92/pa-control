@@ -9,7 +9,7 @@ import tkFileDialog
 
 import nameIterator
 import download_pa
-import cleandata
+# import cleandata
 
 
 class PAGUI(Frame):

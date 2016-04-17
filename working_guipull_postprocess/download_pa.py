@@ -2,6 +2,7 @@
 import visa
 import sys
 import time
+import os
 
 
 def clean(path):
@@ -41,7 +42,7 @@ def download_data(
 
 
     # adds a timestamp to the beginning of the filename
-    path = path + timeStampYMDH() + "_"
+    filename = timeStampYMDH() + "_"+filename
 
 
 
