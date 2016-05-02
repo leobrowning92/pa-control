@@ -82,4 +82,5 @@ def download_data(
             f.write('\n')
     f.close()
     device.close
-    print("Complete, Goodbye!")
+    print("Complete")
+    print("Data saved to: " + PATH_FILENAME)
