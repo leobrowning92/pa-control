@@ -134,7 +134,6 @@ class PAGUI(Frame):
         elif self.v.get() == 2:
             download_pa.download_data(path=self.entry1.get(
             ), filename=self.entry2.get(), values=['VG', 'VDS', 'ID', 'IG'])
-        print("\a") #adds a beep when data is finished pulling
 
 
 def main():
