@@ -46,7 +46,7 @@ def plot_IV(path, skip=1, delim=",", show=False,
     sub.axis([min(x), max(x), min(y1), max(y1)], fontsize=20)
     sub.tick_params(axis='both', which='major', labelsize=20)
 
-    sub.set_title(title)
+    sub.set_title(title, fontsize=20, y=1.08)
     sub.tick_params(axis='both', which='major', labelsize=20)
     sub.set_xlabel(xlabel, fontsize=20)
     sub.set_ylabel(ylabel, fontsize=20)
@@ -89,7 +89,7 @@ def plot_two_same_axis(path, skip=1, delim=",", show=False,
               max(max(y1), max(y2))], fontsize=20)
     sub.tick_params(axis='both', which='major', labelsize=20)
 
-    sub.set_title(title)
+    sub.set_title(title, fontsize=20, y=1.08)
 
     sub.set_xlabel(xlabel, fontsize=20)
     sub.set_ylabel(ylabel, fontsize=20)
@@ -133,7 +133,7 @@ def plot_two_yscales(path, skip=1, delim=",", show=False, save=True, log=False,
 
     ax1.tick_params(axis='both', which='major', labelsize=20)
 
-    ax1.set_title(title, fontsize=20)
+    ax1.set_title(title, fontsize=20, y=1.08)
 
     ax1.set_xlabel(xlabel, fontsize=20)
     ax1.set_ylabel(y1label, fontsize=20, color='r')
@@ -154,7 +154,7 @@ def plot_two_yscales(path, skip=1, delim=",", show=False, save=True, log=False,
     offset_text.set_color('blue')
     for tl in ax2.get_yticklabels():
         tl.set_color('b')
-
+    # plt.tight_layout()
     if show:
         plt.show(block=True)
 
