@@ -171,3 +171,73 @@ def plot_two_yscales(path, skip=1, delim=",", show=False, save=True, log=False,
 
     plt.close(fig)
     pass
+
+
+
+
+    def plot_two_yscales(path, skip=1, delim=",", show=False, save=True, log=False,
+                         title='x vs y', xlabel='x', y1label='y1', y2label='y2'):
+        """plots x , y1 , y2 data from a 3 collumn csv file
+        specific to the ones outputted from the parameter analyzer
+        in the clean room by the download_data_as_matrix.py script
+        which has collumns VG, VDS, ID, IG in that order.
+        saves each plot to a directory called plots at the location of this script.
+        """
+
+        title = os.path.basename(path).replace(".csv", "")
+        print(title)
+        data = np.loadtxt(path, skiprows=skip, delimiter=delim, dtype=float)
+        # print(data)
+
+        x = np.array([row[0]for row in data])
+        y1 = np.array([row[2]for row in data])
+        y2 = np.array([row[3]for row in data])
+
+        fig = plt.figure(figsize=(10, 8), facecolor="white")
+        ax1 = plt.subplot(1, 1, 1)
+        if log:
+            ax1.semilogy(x, y1, "r-", linewidth=2.0)
+        else:
+            ax1.plot(x, y1, "r-", linewidth=2.0)
+            # ax1.legend((x, y2), loc=2, fontsize=30)
+
+        ax1.tick_params(axis='both', which='major', labelsize=20)
+
+        ax1.set_title(title, fontsize=20, y=1.08)
+
+        ax1.set_xlabel(xlabel, fontsize=20)
+        ax1.set_ylabel(y1label, fontsize=20, color='r')
+        # ax1.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
+
+        for tl in ax1.get_yticklabels():
+            tl.set_color('r')
+
+        ax2 = ax1.twinx()
+        ax2.axis([min(x), max(x), min(y2), max(y2)], fontsize=20)
+        ax2.plot(x, y2, "b-", linewidth=2.0)
+
+        ax2.set_ylabel(y2label, fontsize=20, color='b')
+        ax2.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
+        offset_text = ax2.yaxis.get_offset_text()
+
+        offset_text.set_size(20)
+        offset_text.set_color('blue')
+        for tl in ax2.get_yticklabels():
+            tl.set_color('b')
+        # plt.tight_layout()
+        if show:
+            plt.show(block=True)
+
+        if (save and log):
+            checkdir("logplots")
+            name = os.path.basename(path).replace(".csv", "_plt.jpg")
+            fig.savefig("logplots/" + name, format="jpg", bbox_inches='tight')
+
+        elif save:
+            checkdir("plots")
+
+            name=os.path.basename(path).replace(".csv", "_plt.jpg")
+            fig.savefig("plots/" + name, format = "jpg")
+
+        plt.close(fig)
+        pass

@@ -36,13 +36,12 @@ def timeStampYMDH():
 # the rest is to timestamp your data :)
 def download_data(
         path="C:\Users\cleanroom.STAFF\Desktop\Leo\\test",
-        filename="COL_chip1111_device1_testing.txt",
+        filename="COL111_device1_testing.txt",
         values=['VG', 'VDS', 'ID', 'IG']):
 
 
 
     # adds a timestamp to the beginning of the filename
-    filename = timeStampYMDH() + "_"+filename
 
 
 
@@ -66,7 +65,10 @@ def download_data(
             print("Command Timeout!")
         data = device.read_values()
         print("Obtained %d Data Values!" % (len(data)))
+        #Makes the headers for the data
         data.insert(0, "%s" % values[x])
+        # Adds timestamp to the start of the file
+        data.insert(0,timestampYMDH())
         if(matrix == []):
             for i in xrange(len(data)):
                 matrix.append
@@ -82,5 +84,28 @@ def download_data(
             f.write('\n')
     f.close()
     device.close
-    print("Complete")
-    print("Data saved to: " + PATH_FILENAME)
+    print("Data saved to: " + filename)
+
+    #cleans the raw data from the pull section of the script
+    try:
+        lines = []
+        with open("data/" + path, "r") as f:
+            for line in f:
+                # removes extra ',' at the start of each data row
+                lines.append(line[2:-1])
+
+        with open("data/" + path, 'w') as g:
+
+            for line in lines:
+                # checks for 9.91e+99
+                # which is what is appended after compliance is hit
+                if line.startswith('9.91e+99') == False:
+                    g.write(line + "\n")
+    except:
+        print('there was an error with cleaning: ' + path)
+
+    try:
+        np.loadtxt("data/" + path, skiprows=skip,
+                   delimiter=delim, dtype=float)
+    except:
+        print('there was an error with np.loadtxt after cleaning for:\n ' + path)

@@ -12,6 +12,47 @@ import download_pa
 # import cleandata
 
 
+##HELPER FUNCTIONS##
+
+def iterateChip(string):
+    """
+    Iterates the number that X (can be of arbitrary non-sero length)
+    That is situated in a filename of type
+    blahblah_chipX_deviceY_notesyblah.blah
+    """
+    # start index of the chip number comes after the 3 letter chip
+    # code at the start of the name
+    j = 2
+    k = string[j:].find("_")
+
+    # Finds the start stop indeces of the device number
+    string = string.replace(
+        string[:j + k],string[:j] + str(int(string[j:j + k]) + 1))
+
+    l = string.find("_device") + 7
+    m = string[l:].find("_")
+
+    # changes to device 1. Must happen before chip change to keep indices good
+    string = string.replace("_device" + string[l:l + m], "_device1")
+    return string
+
+
+def iterateDevice(string):
+    """
+    Iterates the number that Y (can be of arbitrary non-sero length)
+    That is situated in a filename of type
+    blahblah_chipX_deviceY_notesyblah.blah
+    """
+
+    # Finds the start stop indeces of the device number
+    j = string.find("_device") + 7
+    k = string[j:].find("_")
+
+    return string.replace("_device" + string[j:j + k], "_device" + str(int(string[j:j + k]) + 1))
+
+
+# MAIN PAGE CLASS
+
 class PAGUI(Frame):
 
     def __init__(self, parent):
@@ -92,7 +133,7 @@ class PAGUI(Frame):
 
         else:
             try:
-                newname = nameIterator.iterateChip(self.entry2.get())
+                newname = iterateChip(self.entry2.get())
             except:
                 self.lbl2.config(text="ERROR filename not compatible")
 
@@ -104,7 +145,7 @@ class PAGUI(Frame):
             self.askfile()
         else:
             try:
-                newname = nameIterator.iterateDevice(self.entry2.get())
+                newname = iterateDevice(self.entry2.get())
             except:
                 self.lbl2.config(text="ERROR filename not compatible")
             self.entry2.delete(0, 'end')
@@ -135,6 +176,8 @@ class PAGUI(Frame):
             download_pa.download_data(path=self.entry1.get(
             ), filename=self.entry2.get(), values=['VG', 'VDS', 'ID', 'IG'])
 
+
+##MAIN INSTANCE OF PAGE##
 
 def main():
     root = Tk()
