@@ -16,29 +16,28 @@ paths = []
 for name in filenames:
     paths.append("data/" + name)
 # uncomment for fet measurements#
+for name in paths:
+    try:
+        cleandata.check(name)
 
-if "FET" in name:
-    for path in paths:
-       try:
-           PAplot.plot_two_yscales(path,skip=2,title="",show=False,log=True,
-    		      xlabel="Gate Voltage (VG)",y1label="ID (A)",y2label="IG (A)")
-           PAplot.plot_two_yscales(path,skip=2,title="",show=False,log=False,
-    		      xlabel="Gate Voltage (VG)",y1label="ID (A)",y2label="IG (A)")
-       except Exception as e:
-           print('could not make a plot for:\n ' +path)
-           traceback.print_exc()
-           print(e)
+        if "FET" in name:
+            try:
+                PAplot.plot_two_yscales(path, skip=2, title="", show=False, log=True,
+                                        xlabel="Gate Voltage (VG)", y1label="ID (A)", y2label="IG (A)")
+                PAplot.plot_two_yscales(path, skip=2, title="", show=False, log=False,
+                                        xlabel="Gate Voltage (VG)", y1label="ID (A)", y2label="IG (A)")
+            except Exception as e:
+                print('could not make a plot for:\n ' + path)
+                print(e)
 
-elif "diode" in name:
-    # uncomment for diode measurments#
-    for path in paths:
-        try:
-            PAplot.plot_IV(path, skip=2, title="", show=False,
-                            xlabel="Gate Voltage (VG)", ylabel="ID (A)", log=False)
-        except Exception as e:
-            print('could not make a plot for:\n ' + path)
-            traceback.print_exc()
-            print(e)
-else:
-    print name+"unprocessed"
-os.chdir("..")
+        elif "diode" in name:
+            try:
+                PAplot.plot_IV(path, skip=2, title="", show=False,
+                               xlabel="Gate Voltage (VG)", ylabel="ID (A)", log=False)
+            except Exception as e:
+                print('could not make a plot for:\n ' + path)
+                print(e)
+        else:
+            print name + "unprocessed"
+    except Exception as e:
+        print e

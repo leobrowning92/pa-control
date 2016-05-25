@@ -3,29 +3,9 @@ import visa
 import sys
 import time
 import os
+import cleandata
 
 
-def clean(path):
-    try:
-        lines = []
-        with open(path, "r") as f:
-            for line in f:
-                # removes extra ',' at the start of each data row
-                lines.append(line[2:-1])
-        f.close()
-
-        with open(path, 'w') as g:
-
-            for line in lines:
-                # checks for 9.91e+99
-                # which is what is appended after compliance is hit
-                if line.startswith('9.91e+99') == False:
-                    g.write(line + "\n")
-        g.close()
-    except:
-        print('there was an error with cleaning: ' + path)
-
-    pass
 # Timestamp to make things easier
 def timeStampYMDH():
     # -> 'YYYY_MM_DD_HHMM' as a time stamp
@@ -86,26 +66,4 @@ def download_data(
     device.close
     print("Data saved to: " + filename)
 
-    #cleans the raw data from the pull section of the script
-    try:
-        lines = []
-        with open("data/" + path, "r") as f:
-            for line in f:
-                # removes extra ',' at the start of each data row
-                lines.append(line[2:-1])
-
-        with open("data/" + path, 'w') as g:
-
-            for line in lines:
-                # checks for 9.91e+99
-                # which is what is appended after compliance is hit
-                if line.startswith('9.91e+99') == False:
-                    g.write(line + "\n")
-    except:
-        print('there was an error with cleaning: ' + path)
-
-    try:
-        np.loadtxt("data/" + path, skiprows=skip,
-                   delimiter=delim, dtype=float)
-    except:
-        print('there was an error with np.loadtxt after cleaning for:\n ' + path)
+    cleandata.check(PATH_FILENAME)
