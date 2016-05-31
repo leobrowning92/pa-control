@@ -1,15 +1,17 @@
-import PAplot
+import modules.PAplot as PAplot
 import os
-import cleandata
+import modules.cleandata as cleandata
 import traceback
 import sys
+import time
 #Plotter.plot_two(os.getcwd()+"\\10umgap0_10V.csv",skip=26,title="",xlabel="Gate Voltage (V)",ylabel="Current (A) x$10^{-8}$",data1="$I_G$",data2="$I_D$")
 #Plotter.plot_from_file("pa/10umgap-10_10Vdiode.csv",title="",xlabel="Voltage (V)",ylabel="Current (I) x$10^{-12}$")
 
 
 # allows the Run script to be used within
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
-
+print ("Running post process script\n"+time.strftime('%Y_%m_%d_%H%M'))
+print ("\n=============================================================\n")
 filenames = os.listdir("data")
 paths = []
 

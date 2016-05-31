@@ -24,7 +24,7 @@ def download_data(
     # adds a timestamp to the beginning of the filename
 
 
-
+    filename=filename[:-4]+"_"+timeStampYMDH()+filenamep[-4:]
     # Define the Matrix
     matrix = []
     # Obtain the data from the parameter analyser
@@ -65,5 +65,3 @@ def download_data(
     f.close()
     device.close
     print("Data saved to: " + filename)
-
-    cleandata.check(PATH_FILENAME)

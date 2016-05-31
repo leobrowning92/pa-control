@@ -1,0 +1,17 @@
+Running post process script
+2016_05_31_1705
+
+=============================================================
+
+data/2016_04_21_1041_COL_chip184_device1_topgateFET.csv
+test load successful
+----------
+data/2016_05_06_1324_COL_chip199_device1_secondDepositn_predielectricdiode.csv
+test load successful
+----------
+data/2016_04_21_1041_COL_chip184_device1_topgateFET.csv
+plotted
+----------
+data/2016_05_06_1324_COL_chip199_device1_secondDepositn_predielectricdiode.csv
+plotted
+----------

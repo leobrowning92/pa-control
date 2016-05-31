@@ -7,8 +7,7 @@ from Tkinter import Tk, Text, BOTH, W, N, E, S, RAISED, StringVar, Menu, Radiobu
 from ttk import Frame, Button, Label, Style, Entry
 import tkFileDialog
 
-import nameIterator
-import download_pa
+import modules.download_pa as download_pa
 # import cleandata
 
 

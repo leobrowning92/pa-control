@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 import os
-os.chdir(os.path.dirname(os.path.realpath(__file__)))
+
 
 
 def checkdir(directoryname):

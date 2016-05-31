@@ -1,6 +1,6 @@
 import numpy as np
 import os
-os.chdir(os.path.dirname(os.path.realpath(__file__)))
+
 
 def clean(path):
     try:
