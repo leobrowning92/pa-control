@@ -1,5 +1,6 @@
 import numpy as np
-
+import os
+os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
 def clean(path):
     try:
@@ -18,8 +19,12 @@ def clean(path):
                 if line.startswith('9.91e+99') == False:
                     g.write(line + "\n")
         g.close()
-    except:
-        print('there was an error with cleaning: ' + path)
+        print path + "\ndata cleaned"
+        print "----------"
+    except Exception as e:
+        print('error cleaning : ' + path)
+        print e
+        print "----------"
 
     return
 
@@ -27,11 +32,16 @@ def clean(path):
 def check(path):
     try:
         np.loadtxt(path, skiprows=1, delimiter=",", dtype=float)
-    except:
+        print path + "\ntest load successful"
+        print "----------"
+    except Exception as e:
+        print e
         clean(path)
         try:
             np.loadtxt(path, skiprows=1, delimiter=",", dtype=float)
+            print path + "\ntest load successful"
+            print "----------"
         except Exception as e:
-            print "could not process data : " +path
+            print "error loading data : " +path
             print e
-        
+            print "----------"

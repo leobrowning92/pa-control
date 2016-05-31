@@ -16,28 +16,32 @@ paths = []
 for name in filenames:
     paths.append("data/" + name)
 # uncomment for fet measurements#
-for name in paths:
-    try:
-        cleandata.check(name)
 
-        if "FET" in name:
+for path in paths:
+    try:
+        cleandata.check(path)
+    except Exception as e:
+        print e
+for path in paths:
+    try:
+        if "FET" in path:
             try:
-                PAplot.plot_two_yscales(path, skip=2, title="", show=False, log=True,
-                                        xlabel="Gate Voltage (VG)", y1label="ID (A)", y2label="IG (A)")
-                PAplot.plot_two_yscales(path, skip=2, title="", show=False, log=False,
-                                        xlabel="Gate Voltage (VG)", y1label="ID (A)", y2label="IG (A)")
+                PAplot.plot_two_yscales(path, skip=1, title="", show=False, log=True,xlabel="Gate Voltage (VG)", y1label="ID (A)", y2label="IG (A)")
+                print path + "\nplotted"
+                print "----------"
             except Exception as e:
-                print('could not make a plot for:\n ' + path)
+                print('error while plotting : \n ' + path)
                 print(e)
 
-        elif "diode" in name:
+        elif "diode" in path:
             try:
-                PAplot.plot_IV(path, skip=2, title="", show=False,
-                               xlabel="Gate Voltage (VG)", ylabel="ID (A)", log=False)
+                PAplot.plot_IV(path, skip=2, title="", show=False, xlabel="Gate Voltage (VG)", ylabel="ID (A)",log=False)
+                print path + "\nplotted"
+                print "----------"
             except Exception as e:
-                print('could not make a plot for:\n ' + path)
+                print('error while plotting : \n ' + path)
                 print(e)
         else:
-            print name + "unprocessed"
+            print name + "unprocessed, uspecified plot type Try including 'FET' or 'diode' in the filename"
     except Exception as e:
         print e

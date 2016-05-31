@@ -31,7 +31,9 @@ folder as new data.
 - ~~incorporate the nameiterator into the gui script.~~
 - have the post process script generate a log file using something like `./script.py > <filename>`
 which would pipe the output of the scripts to a log file as well. maybe run the process script
-from a batch file like the gui so that this is consistent?
+from a batch file like the gui so that this is consistent? can try `$python script.py | tee -a log.txt
+` note: the tee command saves to a file and also pipes to stdout (prints to terminal) the -a appends. 
 - have the post process also generate a pdf with all of the plots in it for previewing.
 Unsure as to formatting at the moment
 - need to have the FET data plotted as both log and linear in the same figure
+- make sure titles and labels for plots are not squished
