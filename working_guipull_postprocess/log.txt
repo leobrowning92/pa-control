@@ -15,3 +15,506 @@ plotted
 data/2016_05_06_1324_COL_chip199_device1_secondDepositn_predielectricdiode.csv
 plotted
 ----------
+Running post process script
+2016_06_08_0804
+
+=============================================================
+
+data/COL187_device1_postdielelectric_FET_2016_04_18_1020.csv
+test load successful
+----------
+data/COL182_device2_postetch_diode_2016_04_07_0924.csv
+test load successful
+----------
+data/COL185_device1_preetch_diode_2016_04_05_0952.csv
+test load successful
+----------
+data/COL181_device2_preetch_diode_2016_04_05_1004.csv
+test load successful
+----------
+data/COL189_device2_preetch_diode_2016_04_05_0942.csv
+test load successful
+----------
+data/COL188_device1_predielelectric_FET_2016_04_07_1221.csv
+test load successful
+----------
+data/COL185_device2_preetch_diode_2016_04_05_0953.csv
+test load successful
+----------
+data/COL189_device1_predielelectric_FET_2016_04_07_1225.csv
+test load successful
+----------
+data/COL182_device2_preetch_diode_2016_04_05_1001.csv
+test load successful
+----------
+data/COL189_device2_AlNpostdielelectric_FET_2016_05_03_1237.csv
+test load successful
+----------
+data/COL182_device1_AlNpostdielelectric_FET_2016_05_03_0902.csv
+test load successful
+----------
+data/COL183_device1_predielelectric_FET_2016_04_07_0957.csv
+test load successful
+----------
+data/COL189_device1_postetchip_diode_2016_04_07_0934.csv
+test load successful
+----------
+data/COL181_device1_postdielelectric_FET_2016_04_18_0950.csv
+test load successful
+----------
+data/COL183_device2_postetch_diode_2016_04_07_0925.csv
+test load successful
+----------
+data/COL187_device2_predielelectric_FET_2016_04_07_1220.csv
+test load successful
+----------
+data/COL187_device2_topgate_FET_2016_04_21_1051.csv
+test load successful
+----------
+data/COL183_device2_AlNpostdielelectric_FET_2016_05_03_0942.csv
+test load successful
+----------
+data/COL188_device1_AlNpostdielelectric_FET_2016_05_03_1155.csv
+test load successful
+----------
+data/COL188_device2_postetchip_diode_2016_04_07_0933.csv
+test load successful
+----------
+data/COL185_device2_predielelectric_FET_2016_04_07_1200.csv
+test load successful
+----------
+data/COL186_device2_postetchip_diode_2016_04_07_0931.csv
+test load successful
+----------
+data/COL181_device1_topgate_FET_2016_04_21_1035.csv
+test load successful
+----------
+data/COL188_device1_preetch_diode_2016_04_05_0947.csv
+test load successful
+----------
+data/COL183_device2_predielelectric_FET_2016_04_07_1011.csv
+test load successful
+----------
+data/COL185_device2_AlNpostdielelectric_FET_2016_05_03_0955.csv
+test load successful
+----------
+data/COL186_device2_predielelectric_FET_2016_04_07_1217.csv
+test load successful
+----------
+data/COL184_device2_postetchip_diode_2016_04_07_0927.csv
+test load successful
+----------
+data/COL187_device1_topgate_FET_2016_04_21_1049.csv
+test load successful
+----------
+data/COL182_device1_predielelectric_FET_2016_04_07_0952.csv
+test load successful
+----------
+data/COL184_device1_preetch_diode_2016_04_05_0957.csv
+test load successful
+----------
+data/COL187_device1_predielelectric_FET_2016_04_07_1219.csv
+test load successful
+----------
+data/COL186_device1_AlNpostdielelectric_FET_2016_05_03_1123.csv
+test load successful
+----------
+data/COL187_device1_preetch_diode_2016_04_05_0948.csv
+test load successful
+----------
+data/COL188_device2_AlNpostdielelectric_FET_2016_05_03_1218.csv
+test load successful
+----------
+data/COL187_device1_postetchip_diode_2016_04_07_0931.csv
+test load successful
+----------
+data/COL184_device2_preetch_diode_2016_04_05_0958.csv
+test load successful
+----------
+data/COL183_device2_preetch_diode_2016_04_05_1000.csv
+test load successful
+----------
+data/COL185_device1_postetchip_diode_2016_04_07_0928.csv
+test load successful
+----------
+data/COL184_device1_postdielelectric_FET_2016_04_18_1010.csv
+test load successful
+----------
+data/COL182_device1_postetch_diode_2016_04_07_0923.csv
+test load successful
+----------
+data/COL186_device1_predielelectric_FET_2016_04_07_1206.csv
+test load successful
+----------
+data/COL189_device2_postetchip_diode_2016_04_07_0935.csv
+test load successful
+----------
+data/COL188_device1_postetchip_diode_2016_04_07_0932.csv
+test load successful
+----------
+data/COL186_device2_preetch_diode_2016_04_05_0952.csv
+test load successful
+----------
+data/COL188_device2_predielelectric_FET_2016_04_07_1224.csv
+test load successful
+----------
+data/COL184_device1_predielelectric_FET_2016_04_07_1146.csv
+test load successful
+----------
+data/COL187_device2_postdielelectric_FET_2016_04_18_1021.csv
+test load successful
+----------
+data/COL189_device1_AlNpostdielelectric_FET_2016_05_03_1223.csv
+test load successful
+----------
+data/2016_04_21_1041_COL_chip184_device1_topgateFET.csv
+test load successful
+----------
+data/COL187_device2_postetchip_diode_2016_04_07_0932.csv
+test load successful
+----------
+data/COL189_device2_predielelectric_FET_2016_04_07_1234.csv
+test load successful
+----------
+data/COL184_device1_topgate_FET_2016_04_21_1041.csv
+test load successful
+----------
+data/COL189_device1_preetch_diode_2016_04_05_0939.csv
+test load successful
+----------
+data/COL184_device2_topgate2_FET_2016_04_21_1044.csv
+test load successful
+----------
+data/COL182_device1_preetch_diode_2016_04_05_1001.csv
+test load successful
+----------
+could not convert string to float: VF
+data/COL181_device2_postetch_diode_2016_04_07_0922.csv
+data cleaned
+----------
+error loading data : data/COL181_device2_postetch_diode_2016_04_07_0922.csv
+could not convert string to float: 
+----------
+data/COL186_device2_AlNpostdielelectric_FET_2016_05_03_1141.csv
+test load successful
+----------
+data/COL185_device2_postetchip_diode_2016_04_07_0929.csv
+test load successful
+----------
+data/COL184_device2_topgate_FET_2016_04_21_1042.csv
+test load successful
+----------
+data/COL181_device2_postdielelectric_FET_2016_04_18_1004.csv
+test load successful
+----------
+could not convert string to float: VF
+data/COL181_device1_postetch_diode_2016_04_07_0920.csv
+data cleaned
+----------
+error loading data : data/COL181_device1_postetch_diode_2016_04_07_0920.csv
+could not convert string to float: 
+----------
+data/COL181_device1_predielelectric_FET_2016_04_07_0939.csv
+test load successful
+----------
+data/COL184_device2_postdielelectric_FET_2016_04_18_1015.csv
+test load successful
+----------
+data/COL182_device2_AlNpostdielelectric_FET_2016_05_03_0911.csv
+test load successful
+----------
+data/COL184_device2_predielelectric_FET_2016_04_07_1148.csv
+test load successful
+----------
+data/COL187_device2_preetch_diode_2016_04_05_0949.csv
+test load successful
+----------
+data/COL185_device1_AlNpostdielelectric_FET_2016_05_03_0945.csv
+test load successful
+----------
+data/COL182_device2_predielelectric_FET_2016_04_07_0955.csv
+test load successful
+----------
+data/COL181_device2_topgate_FET_2016_04_21_1037.csv
+test load successful
+----------
+could not convert string to float: VF
+data/COL188_device2_preetch_diode_2016_04_05_0946.csv
+data cleaned
+----------
+error loading data : data/COL188_device2_preetch_diode_2016_04_05_0946.csv
+could not convert string to float: 
+----------
+data/COL184_device1_postetchip_diode_2016_04_07_0927.csv
+test load successful
+----------
+data/COL183_device1_postetch_diode_2016_04_07_0925.csv
+test load successful
+----------
+data/COL186_device1_postetchip_diode_2016_04_07_0930.csv
+test load successful
+----------
+data/COL183_device1_preetch_diode_2016_04_05_0959.csv
+test load successful
+----------
+data/2016_05_06_1324_COL_chip199_device1_secondDepositn_predielectricdiode.csv
+test load successful
+----------
+data/COL185_device1_predielelectric_FET_2016_04_07_1150.csv
+test load successful
+----------
+data/COL181_device2_predielelectric_FET_2016_04_07_0948.csv
+test load successful
+----------
+data/COL186_device1_preetch_diode_2016_04_05_0951.csv
+test load successful
+----------
+data/COL183_device1_AlNpostdielelectric_FET_2016_05_03_0924.csv
+test load successful
+----------
+data/COL181_device1_preetch_diode_2016_04_05_1003.csv
+test load successful
+----------
+data/COL187_device1_postdielelectric_FET_2016_04_18_1020.csv
+plotted
+----------
+data/COL182_device2_postetch_diode_2016_04_07_0924.csv
+plotted
+----------
+data/COL185_device1_preetch_diode_2016_04_05_0952.csv
+plotted
+----------
+data/COL181_device2_preetch_diode_2016_04_05_1004.csv
+plotted
+----------
+data/COL189_device2_preetch_diode_2016_04_05_0942.csv
+plotted
+----------
+data/COL188_device1_predielelectric_FET_2016_04_07_1221.csv
+plotted
+----------
+data/COL185_device2_preetch_diode_2016_04_05_0953.csv
+plotted
+----------
+data/COL189_device1_predielelectric_FET_2016_04_07_1225.csv
+plotted
+----------
+data/COL182_device2_preetch_diode_2016_04_05_1001.csv
+plotted
+----------
+data/COL189_device2_AlNpostdielelectric_FET_2016_05_03_1237.csv
+plotted
+----------
+data/COL182_device1_AlNpostdielelectric_FET_2016_05_03_0902.csv
+plotted
+----------
+data/COL183_device1_predielelectric_FET_2016_04_07_0957.csv
+plotted
+----------
+data/COL189_device1_postetchip_diode_2016_04_07_0934.csv
+plotted
+----------
+data/COL181_device1_postdielelectric_FET_2016_04_18_0950.csv
+plotted
+----------
+data/COL183_device2_postetch_diode_2016_04_07_0925.csv
+plotted
+----------
+data/COL187_device2_predielelectric_FET_2016_04_07_1220.csv
+plotted
+----------
+data/COL187_device2_topgate_FET_2016_04_21_1051.csv
+plotted
+----------
+data/COL183_device2_AlNpostdielelectric_FET_2016_05_03_0942.csv
+plotted
+----------
+data/COL188_device1_AlNpostdielelectric_FET_2016_05_03_1155.csv
+plotted
+----------
+data/COL188_device2_postetchip_diode_2016_04_07_0933.csv
+plotted
+----------
+data/COL185_device2_predielelectric_FET_2016_04_07_1200.csv
+plotted
+----------
+data/COL186_device2_postetchip_diode_2016_04_07_0931.csv
+plotted
+----------
+data/COL181_device1_topgate_FET_2016_04_21_1035.csv
+plotted
+----------
+data/COL188_device1_preetch_diode_2016_04_05_0947.csv
+plotted
+----------
+data/COL183_device2_predielelectric_FET_2016_04_07_1011.csv
+plotted
+----------
+data/COL185_device2_AlNpostdielelectric_FET_2016_05_03_0955.csv
+plotted
+----------
+data/COL186_device2_predielelectric_FET_2016_04_07_1217.csv
+plotted
+----------
+data/COL184_device2_postetchip_diode_2016_04_07_0927.csv
+plotted
+----------
+data/COL187_device1_topgate_FET_2016_04_21_1049.csv
+plotted
+----------
+data/COL182_device1_predielelectric_FET_2016_04_07_0952.csv
+plotted
+----------
+data/COL184_device1_preetch_diode_2016_04_05_0957.csv
+plotted
+----------
+data/COL187_device1_predielelectric_FET_2016_04_07_1219.csv
+plotted
+----------
+data/COL186_device1_AlNpostdielelectric_FET_2016_05_03_1123.csv
+plotted
+----------
+data/COL187_device1_preetch_diode_2016_04_05_0948.csv
+plotted
+----------
+data/COL188_device2_AlNpostdielelectric_FET_2016_05_03_1218.csv
+plotted
+----------
+data/COL187_device1_postetchip_diode_2016_04_07_0931.csv
+plotted
+----------
+data/COL184_device2_preetch_diode_2016_04_05_0958.csv
+plotted
+----------
+data/COL183_device2_preetch_diode_2016_04_05_1000.csv
+plotted
+----------
+data/COL185_device1_postetchip_diode_2016_04_07_0928.csv
+plotted
+----------
+data/COL184_device1_postdielelectric_FET_2016_04_18_1010.csv
+plotted
+----------
+data/COL182_device1_postetch_diode_2016_04_07_0923.csv
+plotted
+----------
+data/COL186_device1_predielelectric_FET_2016_04_07_1206.csv
+plotted
+----------
+data/COL189_device2_postetchip_diode_2016_04_07_0935.csv
+plotted
+----------
+data/COL188_device1_postetchip_diode_2016_04_07_0932.csv
+plotted
+----------
+data/COL186_device2_preetch_diode_2016_04_05_0952.csv
+plotted
+----------
+data/COL188_device2_predielelectric_FET_2016_04_07_1224.csv
+plotted
+----------
+data/COL184_device1_predielelectric_FET_2016_04_07_1146.csv
+plotted
+----------
+data/COL187_device2_postdielelectric_FET_2016_04_18_1021.csv
+plotted
+----------
+data/COL189_device1_AlNpostdielelectric_FET_2016_05_03_1223.csv
+plotted
+----------
+data/2016_04_21_1041_COL_chip184_device1_topgateFET.csv
+plotted
+----------
+data/COL187_device2_postetchip_diode_2016_04_07_0932.csv
+plotted
+----------
+data/COL189_device2_predielelectric_FET_2016_04_07_1234.csv
+plotted
+----------
+data/COL184_device1_topgate_FET_2016_04_21_1041.csv
+plotted
+----------
+data/COL189_device1_preetch_diode_2016_04_05_0939.csv
+plotted
+----------
+data/COL184_device2_topgate2_FET_2016_04_21_1044.csv
+plotted
+----------
+data/COL182_device1_preetch_diode_2016_04_05_1001.csv
+plotted
+----------
+error while plotting : 
+ data/COL181_device2_postetch_diode_2016_04_07_0922.csv
+could not convert string to float: 
+data/COL186_device2_AlNpostdielelectric_FET_2016_05_03_1141.csv
+plotted
+----------
+data/COL185_device2_postetchip_diode_2016_04_07_0929.csv
+plotted
+----------
+data/COL184_device2_topgate_FET_2016_04_21_1042.csv
+plotted
+----------
+data/COL181_device2_postdielelectric_FET_2016_04_18_1004.csv
+plotted
+----------
+error while plotting : 
+ data/COL181_device1_postetch_diode_2016_04_07_0920.csv
+could not convert string to float: 
+data/COL181_device1_predielelectric_FET_2016_04_07_0939.csv
+plotted
+----------
+data/COL184_device2_postdielelectric_FET_2016_04_18_1015.csv
+plotted
+----------
+data/COL182_device2_AlNpostdielelectric_FET_2016_05_03_0911.csv
+plotted
+----------
+data/COL184_device2_predielelectric_FET_2016_04_07_1148.csv
+plotted
+----------
+data/COL187_device2_preetch_diode_2016_04_05_0949.csv
+plotted
+----------
+data/COL185_device1_AlNpostdielelectric_FET_2016_05_03_0945.csv
+plotted
+----------
+data/COL182_device2_predielelectric_FET_2016_04_07_0955.csv
+plotted
+----------
+data/COL181_device2_topgate_FET_2016_04_21_1037.csv
+plotted
+----------
+error while plotting : 
+ data/COL188_device2_preetch_diode_2016_04_05_0946.csv
+could not convert string to float: 
+data/COL184_device1_postetchip_diode_2016_04_07_0927.csv
+plotted
+----------
+data/COL183_device1_postetch_diode_2016_04_07_0925.csv
+plotted
+----------
+data/COL186_device1_postetchip_diode_2016_04_07_0930.csv
+plotted
+----------
+data/COL183_device1_preetch_diode_2016_04_05_0959.csv
+plotted
+----------
+data/2016_05_06_1324_COL_chip199_device1_secondDepositn_predielectricdiode.csv
+plotted
+----------
+data/COL185_device1_predielelectric_FET_2016_04_07_1150.csv
+plotted
+----------
+data/COL181_device2_predielelectric_FET_2016_04_07_0948.csv
+plotted
+----------
+data/COL186_device1_preetch_diode_2016_04_05_0951.csv
+plotted
+----------
+data/COL183_device1_AlNpostdielelectric_FET_2016_05_03_0924.csv
+plotted
+----------
+data/COL181_device1_preetch_diode_2016_04_05_1003.csv
+plotted
+----------
