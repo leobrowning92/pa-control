@@ -3,29 +3,9 @@ import visa
 import sys
 import time
 import os
+import numpy as np
 
 
-def clean(path):
-    try:
-        lines = []
-        with open(path, "r") as f:
-            for line in f:
-                # removes extra ',' at the start of each data row
-                lines.append(line[2:-1])
-        f.close()
-
-        with open(path, 'w') as g:
-
-            for line in lines:
-                # checks for 9.91e+99
-                # which is what is appended after compliance is hit
-                if line.startswith('9.91e+99') == False:
-                    g.write(line + "\n")
-        g.close()
-    except:
-        print('there was an error with cleaning: ' + path)
-
-    pass
 # Timestamp to make things easier
 def timeStampYMDH():
     # -> 'YYYY_MM_DD_HHMM' as a time stamp
@@ -37,12 +17,13 @@ def timeStampYMDH():
 def download_data(
         path="C:\Users\cleanroom.STAFF\Desktop\Leo\\test",
         filename="COL111_device1_testing.txt",
-        values=['VG', 'VDS', 'ID', 'IG']):
+        values=['VG', 'VDS', 'ID', 'IG'],
+        skip=1):
 
 
 
     # adds a timestamp to the beginning of the filename
-
+    filename=filename[:-4]+'_'+timeStampYMDH()+".csv"
 
 
     # Define the Matrix
@@ -56,6 +37,7 @@ def download_data(
         print("Could not connect to Parameter Analyser, sorry")
         sys.exit()
     print("Obtaining %s parameters." % len(values))
+
     for x in range(0, len(values)):
         try:
             print("DO '%s'" % (values[x]))
@@ -68,44 +50,54 @@ def download_data(
         #Makes the headers for the data
         data.insert(0, "%s" % values[x])
         # Adds timestamp to the start of the file
-        data.insert(0,timestampYMDH())
+
         if(matrix == []):
             for i in xrange(len(data)):
                 matrix.append
         matrix.append(data)
+
     matrix = zip(*matrix)
 
     # Save the data to disk
     PATH_FILENAME = os.path.join(path,filename)
-    with open(PATH_FILENAME, "a") as f:
-        for i in range(0, len(matrix)):
-            for j in range(0, len(matrix[i])):
-                f.write(", %s" % matrix[i][j])
-            f.write('\n')
-    f.close()
+
+    if os.path.isfile(PATH_FILENAME):
+        print "that filename already exists, please check directory and try again"
+    else:
+        with open(PATH_FILENAME, "w") as f:
+
+            for i in range(0, len(matrix)):
+                for j in range(0, len(matrix[i])):
+                    f.write(", %s" % matrix[i][j])
+                f.write('\n')
+        f.close()
+        print("Data saved to: " + PATH_FILENAME)
+
     device.close
-    print("Data saved to: " + filename)
 
     #cleans the raw data from the pull section of the script
     try:
         lines = []
-        with open("data/" + path, "r") as f:
+        with open(PATH_FILENAME, "r") as f:
             for line in f:
                 # removes extra ',' at the start of each data row
                 lines.append(line[2:-1])
 
-        with open("data/" + path, 'w') as g:
+        with open(PATH_FILENAME, 'w') as g:
 
             for line in lines:
                 # checks for 9.91e+99
                 # which is what is appended after compliance is hit
                 if line.startswith('9.91e+99') == False:
                     g.write(line + "\n")
-    except:
-        print('there was an error with cleaning: ' + path)
+    except Exception as e:
+        print('there was an error with cleaning: ' + PATH_FILENAME)
+        print(e)
+
 
     try:
-        np.loadtxt("data/" + path, skiprows=skip,
-                   delimiter=delim, dtype=float)
-    except:
-        print('there was an error with np.loadtxt after cleaning for:\n ' + path)
+        np.loadtxt(PATH_FILENAME, skiprows=skip,
+                   delimiter=",", dtype=float)
+    except Exception as e:
+        print('there was an error with np.loadtxt after cleaning for:\n ' + PATH_FILENAME)
+        print(e)

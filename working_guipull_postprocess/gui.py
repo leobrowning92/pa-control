@@ -7,7 +7,7 @@ from Tkinter import Tk, Text, BOTH, W, N, E, S, RAISED, StringVar, Menu, Radiobu
 from ttk import Frame, Button, Label, Style, Entry
 import tkFileDialog
 
-import nameIterator
+
 import download_pa
 # import cleandata
 
@@ -18,16 +18,16 @@ def iterateChip(string):
     """
     Iterates the number that X (can be of arbitrary non-sero length)
     That is situated in a filename of type
-    blahblah_chipX_deviceY_notesyblah.blah
+    [SNT]X_deviceY_notesyblah.blah
     """
     # start index of the chip number comes after the 3 letter chip
     # code at the start of the name
-    j = 2
+    j = 3
     k = string[j:].find("_")
 
     # Finds the start stop indeces of the device number
     string = string.replace(
-        string[:j + k],string[:j] + str(int(string[j:j + k]) + 1))
+        string[:j + k],string[:j] + str(int(string[j:j + k]) + 1).zfill(3))
 
     l = string.find("_device") + 7
     m = string[l:].find("_")
@@ -134,8 +134,10 @@ class PAGUI(Frame):
         else:
             try:
                 newname = iterateChip(self.entry2.get())
-            except:
+            except Exception as e:
                 self.lbl2.config(text="ERROR filename not compatible")
+                newname =self.entry2.get()
+                print(e)
 
             self.entry2.delete(0, 'end')
             self.entry2.insert(0, newname)
@@ -146,8 +148,10 @@ class PAGUI(Frame):
         else:
             try:
                 newname = iterateDevice(self.entry2.get())
-            except:
+            except Exception as e:
                 self.lbl2.config(text="ERROR filename not compatible")
+                newname =self.entry2.get()
+                print(e)
             self.entry2.delete(0, 'end')
             self.entry2.insert(0, newname)
 
