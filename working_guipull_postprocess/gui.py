@@ -8,8 +8,8 @@ from ttk import Frame, Button, Label, Style, Entry
 import tkFileDialog
 
 
-import download_pa
-# import cleandata
+import modules.download_pa as download_pa
+
 
 
 ##HELPER FUNCTIONS##

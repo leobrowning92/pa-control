@@ -3,7 +3,9 @@ import visa
 import sys
 import time
 import os
+
 import numpy as np
+
 
 
 # Timestamp to make things easier
@@ -25,7 +27,7 @@ def download_data(
     # adds a timestamp to the beginning of the filename
     filename=filename[:-4]+'_'+timeStampYMDH()+".csv"
 
-
+    filename=filename[:-4]+"_"+timeStampYMDH()+filename[-4:]
     # Define the Matrix
     matrix = []
     # Obtain the data from the parameter analyser
@@ -74,6 +76,7 @@ def download_data(
         print("Data saved to: " + PATH_FILENAME)
 
     device.close
+
 
     #cleans the raw data from the pull section of the script
     try:
