@@ -167,8 +167,7 @@ class PAGUI(Frame):
 
     def askdirectory(self):
         """Returns a selected directoryname."""
-        self.entry1.delete(0, 'end')
-        self.entry1.insert(0, tkFileDialog.askdirectory())
+        self.directory.set( tkFileDialog.askdirectory())
 
     def askfile(self):
         fullpath = tkFileDialog.askopenfilename()
@@ -176,16 +175,15 @@ class PAGUI(Frame):
             i = fullpath.rfind("/")
         if "\\" in fullpath:
             i = fullpath.rfind("\\")
-        self.entry2.delete(0, 'end')
-        self.entry2.insert(0, fullpath[i + 1:])
+        self.fname_final.set(fullpath[i + 1:])
 
     def pulldata(self):
         if self.datatype.get() == 1:
-            download_pa.download_data(path=self.entry1.get(
-            ), filename=self.entry2.get(), values=['VF', 'IF'])
+            download_pa.download_data(path=self.directory.get(
+            ), filename=self.fname_final.get(), values=['VF', 'IF'])
         elif self.datatype.get() == 2:
-            download_pa.download_data(path=self.entry1.get(
-            ), filename=self.entry2.get(), values=['VG', 'VDS', 'ID', 'IG'])
+            download_pa.download_data(path=self.directory.get(
+            ), filename=self.fname_final.get(), values=['VG', 'VDS', 'ID', 'IG'])
 
 
 ##MAIN INSTANCE OF PAGE##
