@@ -16,26 +16,24 @@ import modules.download_pa as download_pa
 
 ##HELPER FUNCTIONS##
 
-def iterate(instring,iterstring,iterval,pad):
-    """Iterates the iter sequence in the instring, padding to pad number of digits with zeros on the left"""
-    try:
-        int(iterval)
-    except:
-        print("iterval is not an integer string")
-    return instring[:instring.find(iterstring)]+str(int(iterval)+1).zfill(pad)+instring[instring.find(iterstring)+len(iterstring):]
+
 
 def insertstring(instring,placeholder,value,pad=0):
     # assert type(value)==int
-    return instring[:instring.find(placeholder)]+str(value).zfill(pad)+instring[instring.find(placeholder)+len(placeholder):]
+    if placeholder in instring:
+        return instring[:instring.find(placeholder)]+str(value).zfill(pad)+instring[instring.find(placeholder)+len(placeholder):]
+    else:
+        return instring
 
 def timeStampYMDH():
     # -> 'YYYY_MM_DD_HHMM' as a time stamp
     return time.strftime('%Y_%m_%d_%H%M')
 
-def make_fname_final(instring,chipval,deviceval):
+def make_fname_final(instring,chipval,deviceval,runval):
     postchip=insertstring(instring,"[chip]",chipval,pad=3)
     postdev=insertstring(postchip,"[device]",deviceval,pad=2)
-    posttime=insertstring(postdev,"[time]",timeStampYMDH(),pad=0)
+    postrun=insertstring(postdev, "[run]", runval,pad=3)
+    posttime=insertstring(postrun,"[time]",timeStampYMDH(),pad=0)
     return posttime
 
 
@@ -66,6 +64,7 @@ class PAGUI(Frame):
         self.fname_final=StringVar()
         self.device = StringVar()
         self.chip = StringVar()
+        self.run = StringVar()
 
 
         self.toplabel = Label(self, text="Dummy label at the top of the widget",justify="center")
@@ -84,6 +83,7 @@ class PAGUI(Frame):
         self.iterdevice_btn = Button(self, text="Iterate [device]", command=self.newDevice)
 
         self.iterchip_btn = Button(self, text="Iterate [chip]", command=self.newChip)
+        self.iterrun_btn = Button(self, text="Iterate [run]", command=self.newRun)
 
         self.chip.set("001")
         self.chipnum_entry = Entry(self, textvariable=self.chip,width=5)
@@ -91,11 +91,14 @@ class PAGUI(Frame):
         self.device.set("01")
         self.devicenum_entry = Entry(self, textvariable=self.device,width=5)
 
+        self.run.set("001")
+        self.runnum_entry = Entry(self, textvariable=self.run,width=5)
+
         self.directory_entry = Entry(self, textvariable=self.directory)
 
-        self.fname.set('Chip[chip]_device[device]_somenotes_[time].csv')
+        self.fname.set('Chip[chip]_device[device]_somenotes_run[run]_[time].csv')
         self.fname_final.set(" => "+make_fname_final(self.fname.get(),
-                            self.chip.get(),self.device.get()))
+                            self.chip.get(),self.device.get(),self.run.get()))
 
         self.fname_entry = Entry(self, textvariable=self.fname)
 
@@ -119,36 +122,54 @@ class PAGUI(Frame):
 
         #grid alignments of all widgets
         self.toplabel.grid(column=0,columnspan=3, sticky=W, pady=4, padx=5)
+
         self.directory_btn.grid(row=1, column=0)
-        self.filename_btn.grid(row=2, column=0)
-        self.update_btn.grid(row=5, column=0, padx=5)
-        self.iterdevice_btn.grid(row=4, column=0, sticky=N)
-        self.iterchip_btn.grid(row=3, column=0, sticky=N)
-        self.chipnum_entry.grid(row=3, column=1,
-                         padx=5, sticky=W)
-        self.devicenum_entry.grid(row=4, column=1,
-                         padx=5, sticky=W)
         self.directory_entry.grid(row=1, column=1, columnspan=2,
                          padx=5, sticky=E + W)
+
+        self.filename_btn.grid(row=2, column=0)
         self.fname_entry.grid(row=2, column=1, columnspan=2,
                          padx=5, sticky=E + W)
-        self.fname_final_label.grid(column=3, row=2, columnspan=1,
+        self.fname_final_label.grid(row=3,column=1,  columnspan=2,
                        sticky=N + E + W, pady=4, padx=5)
-        self.pulldata_btn.grid(row=5, column=3, padx=5,sticky=E)
-        self.datatype1_radiobutton.grid(row=5,column=1,padx=5,sticky=N + E + S)
-        self.datatype2_radiobutton.grid(row=5,column=2,padx=5,sticky=N + W + S)
-        self.bottomlabel.grid(row=6,column=0,columnspan=3, sticky=W, pady=4, padx=5)
 
+        self.iterchip_btn.grid(row=4, column=0, sticky=N)
+        self.chipnum_entry.grid(row=4, column=1,padx=5, sticky=W)
+
+        self.iterdevice_btn.grid(row=5, column=0, sticky=N)
+        self.devicenum_entry.grid(row=5, column=1,padx=5, sticky=W)
+
+        self.iterrun_btn.grid(row=6, column=0, sticky=N)
+        self.runnum_entry.grid(row=6, column=1,padx=5, sticky=W)
+
+        self.update_btn.grid(row=7, column=0, padx=5)
+        self.pulldata_btn.grid(row=7, column=3, padx=5,sticky=E)
+        self.datatype1_radiobutton.grid(row=7,column=1,padx=5,sticky=N + E + S)
+        self.datatype2_radiobutton.grid(row=7,column=2,padx=5,sticky=N + W + S)
+        self.bottomlabel.grid(row=8,column=0,columnspan=3, sticky=W, pady=4, padx=5)
+
+
+#action funcctions for the various buttons
     def newChip(self):
         if self.fname.get() == '':
             self.askfile()
         else:
             try:
-                self.chip.set(str((int(self.chip.get())+1)).zfill(2))
+                self.chip.set(str((int(self.chip.get())+1)).zfill(3))
                 self.device.set(str(1).zfill(2))
             except Exception as e:
                 print(e)
             self.runUpdate()
+    def newRun(self):
+        if self.fname.get() == '':
+            self.askfile()
+        else:
+            try:
+                self.run.set(str((int(self.run.get())+1)).zfill(3))
+            except Exception as e:
+                print(e)
+            self.runUpdate()
+
 
 
     def newDevice(self):
@@ -163,7 +184,7 @@ class PAGUI(Frame):
 
     def runUpdate(self):
         self.fname_final.set(" => "+make_fname_final(self.fname.get(),
-                            self.chip.get(),self.device.get()))
+                            self.chip.get(),self.device.get(),self.run.get()))
 
     def askdirectory(self):
         """Returns a selected directoryname."""
@@ -192,7 +213,7 @@ class PAGUI(Frame):
 
 def main():
     root = Tk()
-    root.geometry("1000x200+300+300")
+    root.geometry("1000x300+300+300")
     app = PAGUI(root)
     root.mainloop()
 

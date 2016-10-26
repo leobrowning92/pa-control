@@ -25,9 +25,7 @@ def download_data(
 
 
     # adds a timestamp to the beginning of the filename
-    filename=filename[:-4]+'_'+timeStampYMDH()+".csv"
 
-    filename=filename[:-4]+"_"+timeStampYMDH()+filename[-4:]
     # Define the Matrix
     matrix = []
     # Obtain the data from the parameter analyser
