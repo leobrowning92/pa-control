@@ -183,7 +183,7 @@ class PAGUI(Frame):
             self.runUpdate()
 
     def runUpdate(self):
-        self.fname_final.set(" => "+make_fname_final(self.fname.get(),
+        self.fname_final.set(make_fname_final(self.fname.get(),
                             self.chip.get(),self.device.get(),self.run.get()))
 
     def askdirectory(self):
