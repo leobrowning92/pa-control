@@ -186,6 +186,7 @@ class PAGUI(Frame):
         self.fname_final.set(make_fname_final(self.fname.get(),
                             self.chip.get(),self.device.get(),self.run.get()))
 
+
     def askdirectory(self):
         """Returns a selected directoryname."""
         self.directory.set( tkFileDialog.askdirectory())
@@ -196,9 +197,11 @@ class PAGUI(Frame):
             i = fullpath.rfind("/")
         if "\\" in fullpath:
             i = fullpath.rfind("\\")
-        self.fname_final.set(fullpath[i + 1:])
+        # self.fname_final.set(fullpath[i + 1:])
+        self.fname.set(fullpath[i + 1:])
 
     def pulldata(self):
+        self.runUpdate()
         if self.datatype.get() == 1:
             download_pa.download_data(path=self.directory.get(
             ), filename=self.fname_final.get(), values=['VF', 'IF'])
