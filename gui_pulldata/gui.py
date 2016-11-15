@@ -97,7 +97,7 @@ class PAGUI(Frame):
         self.directory_entry = Entry(self, textvariable=self.directory)
 
         self.fname.set('Chip[chip]_device[device]_somenotes_run[run]_[time].csv')
-        self.fname_final.set(" => "+make_fname_final(self.fname.get(),
+        self.fname_final.set(make_fname_final(self.fname.get(),
                             self.chip.get(),self.device.get(),self.run.get()))
 
         self.fname_entry = Entry(self, textvariable=self.fname)
@@ -183,8 +183,9 @@ class PAGUI(Frame):
             self.runUpdate()
 
     def runUpdate(self):
-        self.fname_final.set(" => "+make_fname_final(self.fname.get(),
+        self.fname_final.set(make_fname_final(self.fname.get(),
                             self.chip.get(),self.device.get(),self.run.get()))
+
 
     def askdirectory(self):
         """Returns a selected directoryname."""
@@ -196,9 +197,11 @@ class PAGUI(Frame):
             i = fullpath.rfind("/")
         if "\\" in fullpath:
             i = fullpath.rfind("\\")
-        self.fname_final.set(fullpath[i + 1:])
+        # self.fname_final.set(fullpath[i + 1:])
+        self.fname.set(fullpath[i + 1:])
 
     def pulldata(self):
+        self.runUpdate()
         if self.datatype.get() == 1:
             download_pa.download_data(path=self.directory.get(
             ), filename=self.fname_final.get(), values=['VF', 'IF'])
