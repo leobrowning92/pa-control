@@ -1,0 +1,32 @@
+Blank_test_v2_ID_2017_01_16_1116.txt:  VG: 0 V to 0.0 V VDS: -10 V to 10 V 
+Start time,11:16:53 16/01/2017, 
+
+Directory,C:/Users/Cleanroom.STAFF/Desktop/
+Sample,Blank
+Conditions,test_v2
+Script Type,Sweep
+Sweep Mode,1
+Sweep direction,Double
+Number of Cycles,1
+VDS Initial Value,-10
+VDS Increment Value,0.2
+VDS Final Value,10
+ID Compliance Value,1E-3
+VG Value,0
+VG Increment Between Cycles,0
+VG Final Cycle Value,0.0
+IG Compliance Value,1E-3
+Wait Time,5
+Interval Time,0
+Number of Readings,100.0
+Integration Time,Medium
+X axis is Linear
+X axis Minimum Value,-12
+X axis Maximum Value,12
+Y axis VAR1 is Linear
+Y axis VAR1 Minimum Value,-1E-3
+Y axis VAR1 Maximum Value,1E-3
+Y axis VAR2 is Linear
+Y axis VAR2 Minimum Value,-1E-3
+Y axis VAR2 Maximum Value,1E-3
+

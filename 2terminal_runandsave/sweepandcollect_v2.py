@@ -26,7 +26,7 @@ import visa
 # ----------------------
 
 # Path to save files
-ROOT = "C:/Users/Cleanroom.STAFF/Desktop/Leo/outputs"
+ROOT = "C:/Users/Cleanroom.STAFF/Desktop/"
 # File header information
 SAMPLE = 'Blank'  # Information about the sample used
 CONDITIONS = 'test_v2'  # Information about production conditions
