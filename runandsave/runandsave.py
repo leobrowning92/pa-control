@@ -26,67 +26,62 @@ import visa
 # ----------------------
 
 # Path to save files
-ROOT = "C:/Users/Cleanroom.STAFF/Desktop/Leo/outputs"
+directory = "C:/Users/Cleanroom.STAFF/Desktop/Leo/outputs"
 # File header information
-SAMPLE = 'Blank'  # Information about the sample used
-CONDITIONS = 'test'  # Information about production conditions
+sample_name = 'Blank'  # Information about the sample used
+sample_conditions = 'test'  # Information about production conditions
 
 
 # Source Settings
 
-### VAR1 ###
+### var1 ###
 sweep_mode = '1'  # 1:Linear 2:Log10 3:Log25 4:Log50
 # Single: sweep up or down depending on the sign of VDS_step
 # Double: sweep both up and down
 # the sign of VDS_step just denotes which direction happens first.
 sweep = 'Single'
-VAR1_voltage = 'VDS'  # VAR1 voltage label
-VAR1_current = 'ID'  # VAR1 current label
-VAR1_start = '-10'  # -100 to 100V for SMU; -200 to 200V for HPSMU; -20 to 20V for VSU
-VAR1_stop = '10'  # -100 to 100V for SMU; -200 to 200V for HPSMU; -20 to 20V for VSU
-VAR1_step = '0.2'  # 0 to 200V for SMU; 0 to 400V for HPSMU; 0 to 40V for VSU
-VAR1_compliance = '1E-3'  # -0.1 to 0.1A for SMU; -1 to 1A for HPSMU
+var1_voltage = 'VDS'  # var1 voltage label
+var1_current = 'ID'  # var1 current label
+var1_start = '-10'  # -100 to 100V for SMU; -200 to 200V for HPSMU; -20 to 20V for VSU
+var1_stop = '10'  # -100 to 100V for SMU; -200 to 200V for HPSMU; -20 to 20V for VSU
+var1_step = '0.2'  # 0 to 200V for SMU; 0 to 400V for HPSMU; 0 to 40V for VSU
+var1_compliance = '1E-3'  # -0.1 to 0.1A for SMU; -1 to 1A for HPSMU
 
 
-#### VAR2 ###
-VAR2_voltage = 'VG'  # VAR2 voltage label
-VAR2_current = 'IG'  # VAR2 current label
-VAR2_start = '0'  # -100 to 100V for SMU; -200 to 200V for HPSMU
-VAR2_step = '0'  # -100 to 100V for SMU; -200 to 200V for HPSMU
-VAR2_number_of_steps = '1'  # 1 to 128
-VAR2_compliance = '1E-3'  # -0.1 to 0.1A for SMU; -1 to 1A for HPSMU
+#### var2 ###
+var2_voltage = 'VG'  # var2 voltage label
+var2_current = 'IG'  # var2 current label
+var2_start = '0'  # -100 to 100V for SMU; -200 to 200V for HPSMU
+var2_step = '0'  # -100 to 100V for SMU; -200 to 200V for HPSMU
+var2_number_of_steps = '1'  # 1 to 128
+var2_compliance = '1E-3'  # -0.1 to 0.1A for SMU; -1 to 1A for HPSMU
 
 # Time Settings
-Cycles = 1  # number of cycles the script should run # REMEMBER IF VG_STEP IS SET TO INCREMENT THE NUMBER OF CYCLES VG COULD BECOME AN EXTREMELY HIGH VALUE
-Time_between_cycles = 100
-Integration_time = '2'  # 1 = Short, 2 = Medium, 3 = Long
-waitTime = '5'
-intervalTime = '0'
-##numReadings = abs(float(VAR1_start) - float(VAR1_stop) / float(VAR1_step))
-numReadings = abs((float(VAR1_start) - float(VAR1_stop)) /
-                  float(VAR1_step)) * int(VAR2_number_of_steps)
-print("Number of readings to obtain: %d" % numReadings)
+cycles = 1  # number of cycles the script should run # REMEMBER IF VG_STEP IS SET TO INCREMENT THE NUMBER OF CYCLES VG COULD BECOME AN EXTREMELY HIGH VALUE
+time_between_cycles = 100
+integration_time = '2'  # 1 = Short, 2 = Medium, 3 = Long
+##num_readings = abs(float(var1_start) - float(var1_stop) / float(var1_step))
+num_readings = abs((float(var1_start) - float(var1_stop)) /
+                  float(var1_step)) * int(var2_number_of_steps)
+print("Number of readings to obtain: %d" % num_readings)
 
 # Measurement Display - Graph scaling on the parameter analyser
 x_axis_scale = '1'  # 1:Linear 2:Logarithmic
 x_axis_minimum = '-12'  # numeric value
 x_axis_maximum = '12'  # numeric value
-y_axis_VAR1_scale = '1'  # 1:Linear 2:Logarithmic
-y_axis_VAR1_minimum = '-1E-3'  # numeric value
-y_axis_VAR1_maximum = '1E-3'  # numeric value
-y_axis_VAR2_scale = '1'  # 1:Linear 2:Logarithmic
-y_axis_VAR2_minimum = '-1E-3'  # numeric value
-y_axis_VAR2_maximum = '1E-3'  # numeric value
-
-# Pressure Pump
-pump_disabled = 1  # stopgap to ensure that no residual pump code is operating
+y_axis_var1_scale = '1'  # 1:Linear 2:Logarithmic
+y_axis_var1_minimum = '-1E-3'  # numeric value
+y_axis_var1_maximum = '1E-3'  # numeric value
+y_axis_var2_scale = '1'  # 1:Linear 2:Logarithmic
+y_axis_var2_minimum = '-1E-3'  # numeric value
+y_axis_var2_maximum = '1E-3'  # numeric value
 
 
 # ----------------------
 # DON'T MODIFY THIS
 # ----------------------
 matrix = []
-for i in xrange(int(numReadings)):
+for i in xrange(int(num_readings)):
     matrix.append
 # Check to press ctrl+c to escape the script
 
@@ -95,8 +90,6 @@ def check_escape():
     return msvcrt.kbhit() and msvcrt.getch() == chr(27)
 
 
-def Integration_text(x):
-    return{'1': "Short", '2': "Medium", '3': "Long"}[x]
 
 # Error codes from the parameter analyser
 
@@ -118,13 +111,13 @@ def print_error(sp):
             print " %i: %s" % (i + 1, message[i])
 
 #timestamp functions
-def timeStampYMDH():
+def timestampYMDH():
     #-> 'YYYY_MM_DD_HHMM' as a time stamp
     return time.strftime('%Y_%m_%d_%H%M')
-def timeStampHHMMSS():
+def timestampHHMMSS():
     #-> 'HH:MM:SS' as a time stamp
     return time.strftime('%H:%M:%S')
-def timeStampDDMMYYYY():
+def timestampDDMMYYYY():
     #-> 'DD.MM.YYYY' as a time stamp
     return time.strftime('%d.%m.%Y')
 
@@ -175,13 +168,13 @@ def initialise_matrix_file(path):
     """
     with open(path, 'w') as f:
         f.write('Carbon Nanotube Semiconductor Analysis\n')
-        f.write('Date of experiment: %s\n' % (timeStampDDMMYYYY()))
-        f.write('Time of experiment: %s\n' % (timeStampHHMMSS()))
+        f.write('Date of experiment: %s\n' % (timestampDDMMYYYY()))
+        f.write('Time of experiment: %s\n' % (timestampHHMMSS()))
         f.write('\n')
-        f.write('Sample:%s\n' % (SAMPLE))
+        f.write('Sample:%s\n' % (sample_name))
         f.write('%s : %s to %s in %sV step(s)\n' %
-                (VAR1_voltage, float(VAR1_start), float(VAR1_stop), float(VAR1_step)))
-        f.write('%s : %s to %s in %sV step(s)\n' % (VAR2_voltage,       float(VAR2_start), (float(VAR2_start) + (float(VAR2_step) * float(VAR2_number_of_steps))), float(VAR2_step)))
+                (var1_voltage, float(var1_start), float(var1_stop), float(var1_step)))
+        f.write('%s : %s to %s in %sV step(s)\n' % (var2_voltage,       float(var2_start), (float(var2_start) + (float(var2_step) * float(var2_number_of_steps))), float(var2_step)))
 
 
 
@@ -198,12 +191,12 @@ def update_matrix_file(path, info, data):
         f.write('\n')
 
 # Initialise each file
-string_YMDH = timeStampYMDH()
+string_YMDH = timestampYMDH()
 
-filename_matrix = "%s_%s_matrix_%s.txt" % (SAMPLE, CONDITIONS, string_YMDH)
+filename_matrix = "%s_%s_matrix_%s.txt" % (sample_name, sample_conditions, string_YMDH)
 
 
-path_matrix = os.path.join(ROOT, filename_matrix)
+path_matrix = os.path.join(directory, filename_matrix)
 
 print path_matrix
 
@@ -247,12 +240,12 @@ except:
     sys.exit()
 
 # Setup Program parameters
-program_parameters = "IT%s CA1 DR1 BC" % (Integration_time)
+program_parameters = "IT%s CA1 DR1 BC" % (integration_time)
 print program_parameters
 HP4145B.write(program_parameters)
 # Setup Channel Definitions for sweep
 channel_definitions = "DE CH1,'VS','IS',3,3;CH2,'%s','%s',1,1;CH3,'%s','%s',1,2;CH4;" % (
-    VAR1_voltage, VAR1_current, VAR2_voltage, VAR2_current)
+    var1_voltage, var1_current, var2_voltage, var2_current)
 # Channel 1
 # Channel 2
 # Channel 3
@@ -261,8 +254,8 @@ print channel_definitions
 HP4145B.write(channel_definitions)
 # Setup Measurement display
 measurement_display = "SM DM1 XN '%s',%s,%s,%s; YA '%s',%s,%s,%s; YB '%s',%s,%s,%s" % (
-    VAR1_voltage, x_axis_scale, x_axis_minimum, x_axis_maximum, VAR1_current, y_axis_VAR1_scale, y_axis_VAR1_minimum, y_axis_VAR1_maximum, VAR2_current, y_axis_VAR2_scale, y_axis_VAR2_minimum, y_axis_VAR2_maximum)
-# this needs to be modified to include variable VAR1 and VAR2 names.
+    var1_voltage, x_axis_scale, x_axis_minimum, x_axis_maximum, var1_current, y_axis_var1_scale, y_axis_var1_minimum, y_axis_var1_maximum, var2_current, y_axis_var2_scale, y_axis_var2_minimum, y_axis_var2_maximum)
+# this needs to be modified to include variable var1 and var2 names.
 print measurement_display
 HP4145B.write(measurement_display)
 
@@ -276,19 +269,19 @@ if sp != 0:
 # record start time
 start_time = time.clock()
 # Data Acquisition loop
-Mode = ModeCycle(Time_between_cycles)
-for i in xrange(Cycles):
-    print "cycle: %i of %i" % (i, Cycles)
+mode = ModeCycle(time_between_cycles)
+for i in xrange(cycles):
+    print "cycle: %i of %i" % (i, cycles)
 
-    Mode.begin()
-    # Setup VAR1 Source
+    mode.begin()
+    # Setup var1 Source
     var1_setup = "SS VR %s,%s,%s,%s,%s" % (
-        sweep_mode, VAR1_start, VAR1_stop, VAR1_step, VAR1_compliance)
+        sweep_mode, var1_start, var1_stop, var1_step, var1_compliance)
     print var1_setup
     HP4145B.write(var1_setup)
-    # Setup VAR2 Source
+    # Setup var2 Source
     var2_setup = "SS VP %s,%s,%s,%s" % (
-        VAR2_start, VAR2_step, VAR2_number_of_steps, VAR2_compliance)
+        var2_start, var2_step, var2_number_of_steps, var2_compliance)
     print var2_setup
     HP4145B.write(var2_setup)
     HP4145B.write("BC")
@@ -302,24 +295,24 @@ for i in xrange(Cycles):
         time.sleep(HP4145B.delay)
     print
     # Get Measured values
-    ## VAR1_down=HP4145B.ask_for_values("DO '%s'" % VAR1_current)
-    ## VAR2_down=HP4145B.ask_for_values("DO '%s'" % VAR2_current)
+    ## var1_down=HP4145B.ask_for_values("DO '%s'" % var1_current)
+    ## var2_down=HP4145B.ask_for_values("DO '%s'" % var2_current)
     try:
-        visa.instrument("GPIB::02").write("DO '%s'" % VAR1_current)
+        visa.instrument("GPIB::02").write("DO '%s'" % var1_current)
     except:
-        print("Timeout processing DO '%s'" % VAR2_current)
-    VAR1_down = visa.instrument("GPIB::02").read_values()
+        print("Timeout processing DO '%s'" % var2_current)
+    var1_down = visa.instrument("GPIB::02").read_values()
     try:
-        visa.instrument("GPIB::02").write("DO '%s'" % VAR2_current)
+        visa.instrument("GPIB::02").write("DO '%s'" % var2_current)
     except:
-        print("Timeout processing DO '%s'" % VAR2_current)
-    VAR2_down = visa.instrument("GPIB::02").read_values()
+        print("Timeout processing DO '%s'" % var2_current)
+    var2_down = visa.instrument("GPIB::02").read_values()
 
     # Do we want to loop up and down?
     if sweep == 'double':
         # Reverse sweep direction
         var1_setup = "SS VR %s,%s,%s,%s,%s" % (
-            sweep_mode, VAR1_stop, VAR1_start, '-' + VAR1_step, VAR1_compliance)
+            sweep_mode, var1_stop, var1_start, '-' + var1_step, var1_compliance)
         print var1_setup
         HP4145B.write(var1_setup)
         # Start Measurement
@@ -331,53 +324,53 @@ for i in xrange(Cycles):
             time.sleep(HP4145B.delay)
         print
         # Get Measured values
-        ##VAR1_ask = "DO '%s'" % (VAR1_current)
-        ##VAR2_ask = "DO '%s'" % (VAR2_current)
-        ##VAR1_total = VAR1_down + HP4145B.ask_for_values(VAR1_ask)
-        ##VAR2_total = VAR2_down + HP4145B.ask_for_values(VAR2_ask)
+        ##var1_ask = "DO '%s'" % (var1_current)
+        ##var2_ask = "DO '%s'" % (var2_current)
+        ##var1_total = var1_down + HP4145B.ask_for_values(var1_ask)
+        ##var2_total = var2_down + HP4145B.ask_for_values(var2_ask)
         try:
-            visa.instrument("GPIB::02").write("DO '%s'" % VAR1_current)
+            visa.instrument("GPIB::02").write("DO '%s'" % var1_current)
         except:
-            print("Timeout processing DO '%s'" % VAR2_current)
-        VAR1_total = VAR1_down + visa.instrument("GPIB::02").read_values()
+            print("Timeout processing DO '%s'" % var2_current)
+        var1_total = var1_down + visa.instrument("GPIB::02").read_values()
         try:
-            visa.instrument("GPIB::02").write("DO '%s'" % VAR2_current)
+            visa.instrument("GPIB::02").write("DO '%s'" % var2_current)
         except:
-            print("Timeout processing DO '%s'" % VAR2_current)
-        VAR2_total = VAR2_down + visa.instrument("GPIB::02").read_values()
+            print("Timeout processing DO '%s'" % var2_current)
+        var2_total = var2_down + visa.instrument("GPIB::02").read_values()
 
     else:
-        VAR1_total = VAR1_down
-        VAR2_total = VAR2_down
+        var1_total = var1_down
+        var2_total = var2_down
     T_stop_sweep = time.clock()
     time_for_sweep = str(T_stop_sweep - T_start_sweep)
     print 'sweep time', time_for_sweep
     # Print Values
-    # print VAR1_down
-    # print VAR2_down
+    # print var1_down
+    # print var2_down
     # Save values to disk
-    msg = Mode.message
+    msg = mode.message
 
-    VAR1_total.insert(0, VAR1_current)
-    VAR2_total.insert(0, VAR2_current)
+    var1_total.insert(0, var1_current)
+    var2_total.insert(0, var2_current)
     # X axis title, insert X axis period and label
-    X_axis = [VAR1_voltage]
-    X_values = abs((float(VAR1_start) - float(VAR1_stop)) /
-                   float(VAR1_step)) + 1
-    for x in range(0, int(VAR2_number_of_steps)):
+    X_axis = [var1_voltage]
+    X_values = abs((float(var1_start) - float(var1_stop)) /
+                   float(var1_step)) + 1
+    for x in range(0, int(var2_number_of_steps)):
         for j in range(0, int(X_values)):
-            X_axis.append(float(VAR1_start) + (j * float(VAR1_step)))
+            X_axis.append(float(var1_start) + (j * float(var1_step)))
         if sweep == 'double':
             for j in range(1, int(X_values)):
-                X_axis.append(float(VAR1_stop) - (j * float(VAR1_step)))
+                X_axis.append(float(var1_stop) - (j * float(var1_step)))
     matrix.append(X_axis)
-    matrix.append(VAR1_total)
-    matrix.append(VAR2_total)
+    matrix.append(var1_total)
+    matrix.append(var2_total)
     transpose_matrix = zip(*matrix)
     print("Matrix Length %d" % len(matrix))
     print("Matrix Width %d" % len(matrix[0]))
     # print transpose_matrix
-    if i == Cycles - 1:
+    if i == cycles - 1:
         for i in range(0, len(transpose_matrix)):
             update_matrix_file(path_matrix, (time_since_start,
                                              time_for_sweep, "%s" % msg), transpose_matrix[i])
@@ -385,4 +378,4 @@ for i in xrange(Cycles):
     if check_escape():
         sys.exit()
 
-    Mode.end()
+    mode.end()
