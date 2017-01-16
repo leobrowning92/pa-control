@@ -320,7 +320,7 @@ for i in xrange(cycles):
         # HP4145B.wait_for_ready()
         while not HP4145B.stb & 1:
             # Update the screen to inform user of progress
-                sys.stdout.write('.')
+            sys.stdout.write('.')
             time.sleep(HP4145B.delay)
         print
         # Get Measured values
