@@ -1,14 +1,14 @@
 # pa-control
 
 
-##Overview
+## Overview
 
 
 The idea of this project is to improve how we interface with the
 Parameter analyzer, both for command and data handling, in order
 to improve measurement efficiency
 
-##Usage
+## Usage
 
 * The file gui.bat is for running the gui on the lab computer (Windows 7).
 the gui allows the saving of data from the parameter analyzer
@@ -18,7 +18,7 @@ in order to post process the data
 
 
 
-##To Do
+## To Do
 in no particular order
 - [NEEDS TESTING IN LAB]change file naming to reflect the new file format:
 AAAxxx\_devicex\_[productionstep]\_[FET/diode]\_[othernotes]\_timestamp.csv
