@@ -28,8 +28,8 @@ import visa
 # Path to save files
 directory = "C:/Users/Cleanroom.STAFF/Desktop/Leo/outputs"
 # File header information
-sample_name = 'Blank'  # Information about the sample used
-sample_conditions = 'test'  # Information about production conditions
+sample_name = 'SNT080'  # Information about the sample used
+sample_conditions = 'dropcastAg_reactivation_0.5Vx5_sweep_run002'  # Information about production conditions
 
 
 # Source Settings
@@ -39,13 +39,13 @@ sweep_mode = '1'  # 1:Linear 2:Log10 3:Log25 4:Log50
 # Single: sweep up or down depending on the sign of VDS_step
 # Double: sweep both up and down
 # the sign of VDS_step just denotes which direction happens first.
-sweep = 'Single'
-var1_voltage = 'VDS'  # var1 voltage label
-var1_current = 'ID'  # var1 current label
-var1_start = '-10'  # -100 to 100V for SMU; -200 to 200V for HPSMU; -20 to 20V for VSU
-var1_stop = '10'  # -100 to 100V for SMU; -200 to 200V for HPSMU; -20 to 20V for VSU
-var1_step = '0.2'  # 0 to 200V for SMU; 0 to 400V for HPSMU; 0 to 40V for VSU
-var1_compliance = '1E-3'  # -0.1 to 0.1A for SMU; -1 to 1A for HPSMU
+sweep = 'Double'
+var1_voltage = 'VF'  # var1 voltage label
+var1_current = 'IF'  # var1 current label
+var1_start = '0'  # -100 to 100V for SMU; -200 to 200V for HPSMU; -20 to 20V for VSU
+var1_stop = '100E-3'  # -100 to 100V for SMU; -200 to 200V for HPSMU; -20 to 20V for VSU
+var1_step = '2E-3'  # 0 to 200V for SMU; 0 to 400V for HPSMU; 0 to 40V for VSU
+var1_compliance = '1E-6'  # -0.1 to 0.1A for SMU; -1 to 1A for HPSMU
 
 
 #### var2 ###
@@ -67,10 +67,10 @@ print("Number of readings to obtain: %d" % num_readings)
 
 # Measurement Display - Graph scaling on the parameter analyser
 x_axis_scale = '1'  # 1:Linear 2:Logarithmic
-x_axis_minimum = '-12'  # numeric value
-x_axis_maximum = '12'  # numeric value
+x_axis_minimum = var1_start  # numeric value
+x_axis_maximum = var1_stop  # numeric value
 y_axis_var1_scale = '1'  # 1:Linear 2:Logarithmic
-y_axis_var1_minimum = '-1E-3'  # numeric value
+y_axis_var1_minimum = '0'  # numeric value
 y_axis_var1_maximum = '1E-3'  # numeric value
 y_axis_var2_scale = '1'  # 1:Linear 2:Logarithmic
 y_axis_var2_minimum = '-1E-3'  # numeric value
@@ -167,10 +167,9 @@ def initialise_matrix_file(path):
 
     """
     with open(path, 'w') as f:
-        f.write('Carbon Nanotube Semiconductor Analysis\n')
+        f.write('Sweep data\n')
         f.write('Date of experiment: %s\n' % (timestampDDMMYYYY()))
         f.write('Time of experiment: %s\n' % (timestampHHMMSS()))
-        f.write('\n')
         f.write('Sample:%s\n' % (sample_name))
         f.write('%s : %s to %s in %sV step(s)\n' %
                 (var1_voltage, float(var1_start), float(var1_stop), float(var1_step)))
@@ -309,7 +308,7 @@ for i in xrange(cycles):
     var2_down = visa.instrument("GPIB::02").read_values()
 
     # Do we want to loop up and down?
-    if sweep == 'double':
+    if sweep == 'Double':
         # Reverse sweep direction
         var1_setup = "SS VR %s,%s,%s,%s,%s" % (
             sweep_mode, var1_stop, var1_start, '-' + var1_step, var1_compliance)
