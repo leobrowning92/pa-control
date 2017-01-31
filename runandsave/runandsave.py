@@ -265,6 +265,7 @@ if sp != 0:
     print_error(sp)
 
     sys.exit()
+
 # record start time
 start_time = time.clock()
 # Data Acquisition loop
