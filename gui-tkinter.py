@@ -9,7 +9,7 @@ import tkFileDialog
 
 import time
 
-from download_data import download_data
+from cntrun import download_data
 from cntrun import run_FET_series
 
 
@@ -208,11 +208,9 @@ class PAGUI(Frame):
     def pulldata(self):
         self.runUpdate()
         if self.datatype.get() == 1:
-            download_data(path=self.directory.get(
-            ), filename=self.fname_final.get(), values=['VF', 'IF'])
+            download_data(['VF', 'IF'], self.fname_final.get(), self.directory.get())
         elif self.datatype.get() == 2:
-            download_data(path=self.directory.get(
-            ), filename=self.fname_final.get(), values=['VG', 'VDS', 'ID', 'IG'])
+            download_data(['VG', 'VDS', 'ID', 'IG'], self.fname_final.get(), self.directory.get())
     def datarun(self):
         self.runUpdate()
         if self.datatype.get() ==1:

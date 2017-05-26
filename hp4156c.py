@@ -134,6 +134,10 @@ class hp4156c(object):
 		for val in self.values:
 			header=header+val+","
 		np.savetxt(os.path.join(savedir,fname), self.data, delimiter=',', header=header[:-1], comments="")
+	def collect_data(self,values,fname,savedir):
+		"""combines data acquisition and saving in a single function"""
+		self.daq(values)
+		self.save_data(fname, savedir)
 
 	def single(self):
 		"""Initiate a single measurement using entered parameters"""

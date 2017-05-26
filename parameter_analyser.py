@@ -55,15 +55,15 @@ def measure_transfer(device, fname, savedir, vg_start, vg_stop, vg_step, vds_sta
     print("=>Sweep Parameters set")
     device.single()
     device.get_error()
-    device.daq(['VG', 'VDS', 'ID', 'IG'])
-    device.get_error()
     if "[INFO]"in fname:
         if vds_step==0:
             fname = fname.replace("[INFO]", "transferVG" + str(abs(vg_start)) + "VDS" + str(abs(vds_start)))
         else:
             fname = fname.replace("[INFO]", "transferVG" + str(abs(vg_start)) + "VDS" + str(abs(vds_start)) + "+" + str(vds_num) + "x" + str(abs(vds_step)))
-    device.save_data(fname,savedir)
+    device.collect_data(['VG', 'VDS', 'ID', 'IG'],fname,savedir)
+    device.get_error()
     print("=>Data Finished Collecting")
+
 def measure_output(device, fname, savedir, vds_start, vds_stop, vds_step, vg_start, vg_step, vg_num):
     device.var("VAR1",["LIN","DOUB",str(vds_start),str(vds_step),str(vds_stop),"1e-3"])
     device.get_error()
@@ -74,14 +74,13 @@ def measure_output(device, fname, savedir, vds_start, vds_stop, vds_step, vg_sta
     print("=>Sweep Parameters set")
     device.single()
     device.get_error()
-    device.daq(['VG', 'VDS', 'ID', 'IG'])
-    device.get_error()
     if "[INFO]"in fname:
         if vds_step==0:
             fname = fname.replace("[INFO]", "outputVDS" + str(abs(vds_start)) + "VG" + str(abs(vg_start)))
         else:
             fname = fname.replace("[INFO]", "outputVDS" + str(abs(vds_start)) + "VG" + str(abs(vg_start)) + "+" + str(vg_num) + "x" + str(abs(vg_step)))
-    device.save_data(fname,savedir)
+    device.collect_data(['VG', 'VDS', 'ID', 'IG'],fname,savedir)
+    device.get_error()
     print("=>Data Finished Collecting")
 def test_fet(fname="test_[INFO].csv",savedir=""):
     # Initialise the device

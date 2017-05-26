@@ -18,6 +18,10 @@ def run_FET_series(fname, savedir):
     pa.measure_output(device, fname, savedir, -5, 5, 0.1, -20, 5, 9)
     end_time=time.time()
     print(str(datetime.timedelta(seconds=end_time-start_time)))
+def download_data(values,fname,savedir):
+    device = pa.initialize_device()
+    device.collect_data(values, fname, savedir)
+
 
 if __name__ == "__main__":
     run_FET_series("test_[INFO].csv","")
