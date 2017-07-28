@@ -29,7 +29,7 @@ def define_transfer_smu(device):
     device.get_error()
     device.smu("SMU3",["VG","VAR1","IG","V"])
     device.get_error()
-    device.disableSmu(["SMU4"])
+    device.smu("SMU4",["VGND","CONS","IGND","COMM"])
     device.get_error()
     print("=>SMU's assigned")
 def define_output_smu(device):
@@ -41,7 +41,7 @@ def define_output_smu(device):
     device.get_error()
     device.smu("SMU3",["VG","VAR2","IG","V"])
     device.get_error()
-    device.disableSmu(["SMU4"])
+    device.smu("SMU4",["VGND","CONS","IGND","COMM"])
     device.get_error()
     print("=>SMU's assigned")
 def measure_transfer(device, fname, savedir, vg_start, vg_stop, vg_step, vds_start, vds_step, vds_num):
