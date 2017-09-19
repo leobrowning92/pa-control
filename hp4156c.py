@@ -24,11 +24,14 @@ class hp4156c(object):
 		parameter analyser with ID _self.deviceName. If no parameter analyser found
 		the initiation is aborted and a sys.exit is called"""
 		print("HP4156C Initialisation")
-		_devices = visa.get_instruments_list()
+		rm = visa.ResourceManager()
+		_devices = rm.list_resources()
+		print(_devices)
 		for _x in range(0,len(_devices)):
+			print(_devices[_x])
 			try:
-				self.pa = visa.instrument(_devices[_x])
-				self.device_id = self.pa.ask("*IDN?")
+				self.pa = rm.open_resource((_devices[_x]))
+				self.device_id = self.pa.ask("*IDN?").encode().rstrip()
 				if(self.device_id == self.deviceName):
 					print("Found device %s"%self.device_id)
 					break
@@ -118,14 +121,18 @@ class hp4156c(object):
 		#self.data = self._daqStringMod(arg)
 		self.values=values #necessary for saving data
 		self.data =[[]]*len(values)
+		self.pa.timeout=120000
 		for x in range(0,len(values)):
 			try:
 				print("Obtaining %s data values" % values[x])
 				self.pa.write(":DATA? %s"%values[x])
 			except:
 				print("Command Timeout!")
-			self.data[x] = self.pa.read_values()
+			read = self.pa.read() # returns unicode string of values
+			#decodes string and adds to data array
+			self.data[x] = [float(a) for a in read.encode().rstrip().split(",")]
 			print("Obtained %d data values for %s" % (len(self.data[x]),values[x]))
+		self.pa.timeout=3000
 		self.data=np.transpose(np.array(self.data))
 		print ("data in an {} array".format(self.data.shape))
 
