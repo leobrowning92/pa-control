@@ -1,12 +1,14 @@
-# pa-control
+# Agillent 4156c Parameter Analyzer control and data axquisition
 
 
 ## Overview
 
 
-The idea of this project is to improve how we interface with the
-Parameter analyzer, both for command and data handling, in order
+The idea of this project is to improve how we interface with our
+Agillent 4156c Parameter Analyzer, both for command and data handling, in order
 to improve measurement efficiency
+
+This work is covered under the MIT open License. If you use or are inspired by this work, please be in touch!
 
 ## Usage
 
